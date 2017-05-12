@@ -3,6 +3,7 @@ The official Microsoft FramerJS Toolkit. Here's an overview of everything you ne
 
 ## Documentation
 [Documentation for available controls](/documentation.md)
+[Segoe fonts](https://docs.microsoft.com/en-us/windows/uwp/design-downloads/index)
 
 ## Framer modules
 Modules have a superpower: they help keep your code clean so you can focus on the good stuff. They do this by enabling segmentation of modular bits of code.
