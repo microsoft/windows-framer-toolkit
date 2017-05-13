@@ -46,7 +46,7 @@ If you hit any of the known bugs listed below for a specific control, please con
 #### Motion
 [Motion Curves](#motioncurves)
 
-#### Neon
+#### Fluent
 [Noise](#noise)
 
 [Acrylic](#acrylic)
@@ -342,7 +342,7 @@ leftPane.states =
 		time: 0.3
 ```
 
-## Neon
+## Fluent
 ### Noise
 * Noise is used by the acrylic module to create acrylic material.
 
