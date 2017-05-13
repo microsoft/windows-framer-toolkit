@@ -347,7 +347,7 @@ leftPane.states =
 * Noise is used by the acrylic module to create acrylic material.
 
 ### Acrylic
-* Detailed Acrylic documentation coming soon
+* [Detailed Acrylic documentation](https://docs.microsoft.com/en-us/windows/uwp/style/acrylic)
 * To use acrylic on a layer, pass in the base background color, opacity, and the layer name. Make sure to include both the noise and acrylic modules in your modules folder.
 * Example:
 ```
