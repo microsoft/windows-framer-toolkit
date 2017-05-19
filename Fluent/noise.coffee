@@ -21,5 +21,5 @@ exports.noise = (opacity, element) ->
 		x++
 	element.style.backgroundImage = 'url(' + canvas.toDataURL('image/png') + ')'
 	element.style.backgroundRepeat = 'repeat'
-	element.style.backgroudnPostition = 'top left'
+	element.style.backgroundPosition = 'top left'
 	element.style.backgroundSize = 'auto'
