@@ -34,7 +34,7 @@ class suggestItem extends Layer
 			x: 12
 			y: 5
 			uwpStyle: "body"
-			textOverflow: 'clip'
+			textOverflow: "clip"
 			text: "something"
 
 		@onMouseOver -> @backgroundColor = @setBackgroundColor("over")
@@ -54,12 +54,12 @@ class suggestItem extends Layer
 
 class exports.ComboBox extends Layer
 	# A default list to get our customers going
-	# The list should contain 2 values: 'item' and 'selected'
+	# The default list contains 2 values: 'item' and 'selected'
 	defaultItemList = [
-		{item:'Item 1'},
-		{item:'item 2', selected: true},
-		{item:'item 3'},
-		{item:'item 4'}
+		{item:"Item 1"},
+		{item:"item 2", selected: true},
+		{item:"item 3"},
+		{item:"item 4"}
 	]
 
 	listLength = defaultItemList.length
@@ -97,6 +97,7 @@ class exports.ComboBox extends Layer
 			height: 32
 			backgroundColor: Color.altMediumLow
 			borderColor: Color.baseMediumLow
+			borderColor: "red"
 			borderWidth: 2
 			y: @headerText.height + 8
 
@@ -201,17 +202,27 @@ class exports.ComboBox extends Layer
 	updateBoxVisuals: (curEvent) ->
 		switch curEvent
 			when "over"
-				@contentWrap.backgroundColor = Color.altMedium
-				@contentWrap.borderColor = Color.baseMedium
-				@chevron.color = Color.baseMediumHigh
+				comboBoxBackgroundColor = Color.altMedium
+				comboBoxBorderColor = Color.baseMediumHigh
+				chevronColor = Color.baseMediumHigh
 			when "down"
-				@contentWrap.backgroundColor = Color.listMedium
+				comboBoxBackgroundColor = Color.listMedium
+				comboBoxBorderColor = Color.baseMediumLow
 			when "up"
-				@contentWrap.backgroundColor = Color.altMediumLow
+				comboBoxBackgroundColor = Color.altMediumLow
 			when "out"
-				@contentWrap.borderColor = Color.baseMediumLow
+				comboBoxBackgroundColor = Color.transparent
+				comboBoxBorderColor = Color.baseMediumLow
 			when "disabled"
-				@headerText.color = Color.baseMediumLow
-				@contentWrap.backgroundColor = Color.baseLow
-				@contentWrap.borderColor = Color.baseLow
-				@chevron.color = Color.baseMediumLow
+				headerTextColor = Color.baseMediumLow
+				comboBoxBackgroundColor = Color.baseLow
+				comboBoxBorderColor = Color.baseLow
+				chevronColor = Color.baseMediumLow
+			else
+				comboBoxBorderColor = Color.baseMediumLow
+				comboBoxBackgroundColor = Color.transparent
+
+		@contentWrap.backgroundColor = comboBoxBackgroundColor
+		@contentWrap.borderColor = comboBoxBorderColor
+		@chevron.color = chevronColor
+		@headerText.color = headerTextColor

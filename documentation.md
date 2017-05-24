@@ -32,6 +32,8 @@ If you hit any of the known bugs listed below for a specific control, please con
 #### Pickers
 [CalendarDatePicker](#calendardatepicker)
 
+[ComboBox](#combobox)
+
 [DatePicker](#datepicker)
 
 [TimePicker](#timepicker)
@@ -46,7 +48,7 @@ If you hit any of the known bugs listed below for a specific control, please con
 #### Motion
 [Motion Curves](#motioncurves)
 
-#### Fluent
+#### Neon
 [Noise](#noise)
 
 [Acrylic](#acrylic)
@@ -235,6 +237,25 @@ pickDate = new CalendarDatePicker
 	date: "09/23/2017"
 ```
 
+### ComboBox
+* [Detailed ComboBox documentation](~)
+* Properties available:
+	* *header:* text that appears above the control, default: "Control header"
+	* *itemList:* an array of nested objects that populate the options in the ComboBox, give each object item, set selected to true/false, add children, and default is defaultItemList:
+
+* Example:
+```
+comboBox = new ComboBox
+	header: "Game consoles"
+	itemList: [
+		{item: 'Xbox'},
+		{item: 'Playstation', selected: true},
+		{item: 'Atari'},
+		{item: 'Sega'},
+		{item: 'Gameboy'}
+	]
+```
+
 ### TimePicker
 * [Detailed TimePicker documentation](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/time-picker)
 * Properties available:
@@ -342,12 +363,12 @@ leftPane.states =
 		time: 0.3
 ```
 
-## Fluent
+## Neon
 ### Noise
 * Noise is used by the acrylic module to create acrylic material.
 
 ### Acrylic
-* [Detailed Acrylic documentation](https://docs.microsoft.com/en-us/windows/uwp/style/acrylic)
+* Detailed Acrylic documentation coming soon
 * To use acrylic on a layer, pass in the base background color, opacity, and the layer name. Make sure to include both the noise and acrylic modules in your modules folder.
 * Example:
 ```
