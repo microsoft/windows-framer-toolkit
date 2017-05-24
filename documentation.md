@@ -238,7 +238,7 @@ pickDate = new CalendarDatePicker
 ```
 
 ### ComboBox
-* [Detailed ComboBox documentation](~)
+* Detailed ComboBox documentation coming soon
 * Properties available:
 	* *header:* text that appears above the control, default: "Control header"
 	* *itemList:* an array of nested objects that populate the options in the ComboBox, give each object item, set selected to true/false, add children, and default is defaultItemList:
