@@ -1,6 +1,6 @@
 # Button requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 
 class exports.Button extends Layer
 	constructor: (@options={}) ->
@@ -8,7 +8,7 @@ class exports.Button extends Layer
 		@options.enabled ?= true
 		@options.width ?= undefined
 		@options.height ?= 32
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		super @options
 		@createLayers()
 
@@ -81,25 +81,25 @@ class exports.Button extends Layer
 
 	updateVisuals: (curEvent) ->
 		if @options.enabled
-			labelColor = Color.baseHigh
+			labelColor = SystemThemeColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					buttonBackgroundColor = Color.baseLow
-					buttonBorderColor = Color.baseMediumLow
+					buttonBackgroundColor = SystemThemeColor.baseLow
+					buttonBorderColor = SystemThemeColor.baseMediumLow
 				when "mousedown"
-					buttonBackgroundColor = Color.baseMediumLow
-					buttonBorderColor = Color.transparent
+					buttonBackgroundColor = SystemThemeColor.baseMediumLow
+					buttonBorderColor = SystemThemeColor.transparent
 				when "mouseover"
-					buttonBackgroundColor = Color.baseLow
-					buttonBorderColor = Color.baseMediumLow
+					buttonBackgroundColor = SystemThemeColor.baseLow
+					buttonBorderColor = SystemThemeColor.baseMediumLow
 				else
-					buttonBackgroundColor = Color.baseLow
-					buttonBorderColor = Color.transparent
+					buttonBackgroundColor = SystemThemeColor.baseLow
+					buttonBorderColor = SystemThemeColor.transparent
 		else
-			labelColor = Color.baseMediumLow
-			buttonBackgroundColor = Color.baseLow
-			buttonBorderColor = Color.transparent
+			labelColor = SystemThemeColor.baseMediumLow
+			buttonBackgroundColor = SystemThemeColor.baseLow
+			buttonBorderColor = SystemThemeColor.transparent
 			@labelText.off Events.TapStart
 
 		@labelText.color = labelColor

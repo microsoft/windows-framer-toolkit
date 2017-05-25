@@ -16,7 +16,7 @@ class exports.Flyout extends Layer
 		@options.label ?= "Label"
 		@options.width ?= 96
 		@options.height ?= 44
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		super @options
 		@createLayers()
 
@@ -41,8 +41,8 @@ class exports.Flyout extends Layer
 		@container = new Layer
 			parent: @
 			name: "Flyout Background"
-			backgroundColor: Color.chromeMediumLow
-			borderColor: Color.chromeHigh
+			backgroundColor: SystemThemeColor.chromeMediumLow
+			borderColor: SystemThemeColor.chromeHigh
 			borderWidth: 1
 			width: @labelText.width + leftRightPadding * 2
 			height: @labelText.height + topPadding + bottomPadding

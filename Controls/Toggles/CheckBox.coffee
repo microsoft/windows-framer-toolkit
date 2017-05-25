@@ -57,7 +57,7 @@ class exports.CheckBox extends Layer
 			width: @boxSize
 			height: @boxSize
 			borderWidth: 2
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			y: 6
 
 		@check = new Layer
@@ -83,7 +83,7 @@ class exports.CheckBox extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			width: @options.width
 
 		@resizeContainer()
@@ -119,54 +119,54 @@ class exports.CheckBox extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.toggled
 			if @options.enabled
-				labelColor = Color.baseHigh
+				labelColor = SystemThemeColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						boxBorderColor = Color.baseHigh
-						boxBackgroundColor = Color.accent
-						checkColor = Color.chromeWhite
+						boxBorderColor = SystemThemeColor.baseHigh
+						boxBackgroundColor = SystemThemeColor.accent
+						checkColor = SystemThemeColor.chromeWhite
 					when "mousedown"
-						boxBorderColor = Color.transparent
-						boxBackgroundColor = Color.baseMedium
-						checkColor = Color.chromeWhite
+						boxBorderColor = SystemThemeColor.transparent
+						boxBackgroundColor = SystemThemeColor.baseMedium
+						checkColor = SystemThemeColor.chromeWhite
 						@options.toggled = false
 					when "mouseover"
-						boxBorderColor = Color.baseHigh
-						boxBackgroundColor = Color.accent
-						checkColor = Color.chromeWhite
+						boxBorderColor = SystemThemeColor.baseHigh
+						boxBackgroundColor = SystemThemeColor.accent
+						checkColor = SystemThemeColor.chromeWhite
 					else
-						boxBorderColor = Color.transparent
-						boxBackgroundColor = Color.accent
-						checkColor = Color.chromeWhite
+						boxBorderColor = SystemThemeColor.transparent
+						boxBackgroundColor = SystemThemeColor.accent
+						checkColor = SystemThemeColor.chromeWhite
 			else
-				labelColor = Color.baseMediumLow
-				boxBorderColor = Color.baseMediumLow
-				boxBackgroundColor = Color.transparent
-				checkColor = Color.baseMediumLow
+				labelColor = SystemThemeColor.baseMediumLow
+				boxBorderColor = SystemThemeColor.baseMediumLow
+				boxBackgroundColor = SystemThemeColor.transparent
+				checkColor = SystemThemeColor.baseMediumLow
 				@container.off Events.TapStart
 		else
 			if @options.enabled
-				labelColor = Color.baseHigh
-				checkColor = Color.transparent
+				labelColor = SystemThemeColor.baseHigh
+				checkColor = SystemThemeColor.transparent
 
 				if curEvent == "mouseup"
-					boxBorderColor = Color.baseHigh
-					boxBackgroundColor = Color.transparent
+					boxBorderColor = SystemThemeColor.baseHigh
+					boxBackgroundColor = SystemThemeColor.transparent
 				else if curEvent == "mousedown"
-					boxBorderColor = Color.transparent
-					boxBackgroundColor = Color.baseMedium
+					boxBorderColor = SystemThemeColor.transparent
+					boxBackgroundColor = SystemThemeColor.baseMedium
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					boxBorderColor = Color.baseHigh
-					boxBackgroundColor = Color.transparent
+					boxBorderColor = SystemThemeColor.baseHigh
+					boxBackgroundColor = SystemThemeColor.transparent
 				else
-					boxBorderColor = Color.baseMediumHigh
-					boxBackgroundColor = Color.transparent
+					boxBorderColor = SystemThemeColor.baseMediumHigh
+					boxBackgroundColor = SystemThemeColor.transparent
 			else
-				labelColor = Color.baseMediumLow
-				boxBorderColor = Color.baseMediumLow
-				boxBackgroundColor = Color.transparent
+				labelColor = SystemThemeColor.baseMediumLow
+				boxBorderColor = SystemThemeColor.baseMediumLow
+				boxBackgroundColor = SystemThemeColor.transparent
 				@container.off Events.TapStart
 
 		@labelText.color = labelColor

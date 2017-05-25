@@ -11,7 +11,7 @@ class exports.DatePicker extends Layer
 		@options.enabled ?= true
 		@options.width ?= 296
 		@options.height ?= 60
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		super @options
 		@createLayers()
 
@@ -65,7 +65,7 @@ class exports.DatePicker extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			width: @options.width
 			height: @options.height
 
@@ -84,8 +84,8 @@ class exports.DatePicker extends Layer
 			width: @options.width
 			height: 32
 			y: @headerText.maxY
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.baseMediumLow
+			backgroundColor: SystemThemeColor.altMediumLow
+			borderColor: SystemThemeColor.baseMediumLow
 			borderWidth: 2
 
 		@monthText = new Type
@@ -105,7 +105,7 @@ class exports.DatePicker extends Layer
 			height: @box.height - 4
 			width: 2
 			x: @monthText.maxX
-			backgroundColor: Color.baseLow
+			backgroundColor: SystemThemeColor.baseLow
 
 		@dateText = new Type
 			parent: @box
@@ -124,7 +124,7 @@ class exports.DatePicker extends Layer
 			height: @box.height - 4
 			width: 2
 			x: @dateText.maxX
-			backgroundColor: Color.baseLow
+			backgroundColor: SystemThemeColor.baseLow
 
 		@yearText = new Type
 			parent: @box
@@ -154,8 +154,8 @@ class exports.DatePicker extends Layer
 			name: "Picker"
 			width: @box.width
 			height: (datePickerItems.length - 1) * 44 + 46
-			backgroundColor: Color.chromeMediumLow
-			borderColor: Color.chromeHigh
+			backgroundColor: SystemThemeColor.chromeMediumLow
+			borderColor: SystemThemeColor.chromeHigh
 			borderWidth: 1
 			visible: false
 			clip: true
@@ -170,7 +170,7 @@ class exports.DatePicker extends Layer
 			name: "Divider"
 			width: 2
 			height: (datePickerItems.length - 1) * 44
-			backgroundColor: Color.baseLow
+			backgroundColor: SystemThemeColor.baseLow
 			x: 135
 
 		@divider2 = new Layer
@@ -178,7 +178,7 @@ class exports.DatePicker extends Layer
 			name: "Divider"
 			width: 2
 			height: (datePickerItems.length - 1) * 44
-			backgroundColor: Color.baseLow
+			backgroundColor: SystemThemeColor.baseLow
 			x: 215
 
 		@items = new Layer
@@ -186,14 +186,14 @@ class exports.DatePicker extends Layer
 			name: "Items"
 			width: @picker.width
 			height: (datePickerItems.length - 1) * 44
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			clip: true
 
 		for i in [0..datePickerItems.length - 1]
 			itemContainer = new Layer
 				parent: @items
 				name: "Item Container"
-				backgroundColor: Color.transparent
+				backgroundColor: SystemThemeColor.transparent
 				width: @picker.width
 				height: 44
 				y: (i * 44) - 22
@@ -235,19 +235,19 @@ class exports.DatePicker extends Layer
 					bottom: 12
 
 			if i is 0 or i is datePickerItems.length - 1
-				monthText.color = dateText.color = yearText.color = Color.baseMediumLow
+				monthText.color = dateText.color = yearText.color = SystemThemeColor.baseMediumLow
 			else if i is 4
-				monthText.color = dateText.color = yearText.color = Color.baseHigh
-				itemContainer.backgroundColor = Color.listAccentLow
+				monthText.color = dateText.color = yearText.color = SystemThemeColor.baseHigh
+				itemContainer.backgroundColor = SystemThemeColor.listAccentLow
 			else
-				monthText.color = dateText.color = yearText.color = Color.baseMedium
+				monthText.color = dateText.color = yearText.color = SystemThemeColor.baseMedium
 
 		@bottomDivider = new Layer
 			parent: @picker
 			name: "Bottom Divider"
 			width: @picker.width - 2
 			height: 2
-			backgroundColor: Color.baseLow
+			backgroundColor: SystemThemeColor.baseLow
 			y: (datePickerItems.length - 1) * 44
 
 		@bottomButtons = new Layer
@@ -255,7 +255,7 @@ class exports.DatePicker extends Layer
 			name: "Bottom Buttons"
 			width: @picker.width - 2
 			height: 44
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			y: @bottomDivider.maxY
 
 		@acceptButton = new Type
@@ -303,28 +303,28 @@ class exports.DatePicker extends Layer
 
 	updateVisuals: (curEvent) ->
 		if @options.enabled
-			dateColor = Color.baseHigh
-			headerColor = Color.baseHigh
+			dateColor = SystemThemeColor.baseHigh
+			headerColor = SystemThemeColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					boxBorderColor = Color.baseMedium
-					boxBackgroundColor = Color.altMedium
+					boxBorderColor = SystemThemeColor.baseMedium
+					boxBackgroundColor = SystemThemeColor.altMedium
 					@picker.visible = @picker.visible is false ? true : false
 				when "mousedown"
-					boxBorderColor = Color.baseMediumLow
-					boxBackgroundColor = Color.baseLow
+					boxBorderColor = SystemThemeColor.baseMediumLow
+					boxBackgroundColor = SystemThemeColor.baseLow
 				when "mouseover"
-					boxBorderColor = Color.baseMedium
-					boxBackgroundColor = Color.altMedium
+					boxBorderColor = SystemThemeColor.baseMedium
+					boxBackgroundColor = SystemThemeColor.altMedium
 				else
-					boxBorderColor = Color.baseMediumLow
-					boxBackgroundColor = Color.altMediumLow
+					boxBorderColor = SystemThemeColor.baseMediumLow
+					boxBackgroundColor = SystemThemeColor.altMediumLow
 		else
-			headerColor = Color.baseMediumLow
-			dateColor = Color.baseMediumLow
-			boxBorderColor = Color.transparent
-			boxBackgroundColor = Color.baseLow
+			headerColor = SystemThemeColor.baseMediumLow
+			dateColor = SystemThemeColor.baseMediumLow
+			boxBorderColor = SystemThemeColor.transparent
+			boxBackgroundColor = SystemThemeColor.baseLow
 
 		@headerText.color = headerColor
 		@monthText.color = @dateText.color = @yearText.color = dateColor

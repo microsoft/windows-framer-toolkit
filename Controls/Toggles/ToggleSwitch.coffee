@@ -10,7 +10,7 @@ class exports.ToggleSwitch extends Layer
 		@options.offText ?= "Off"
 		@options.width ?= undefined
 		@options.height ?= 56
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		@options.enabled ?= true
 		@options.toggled ?= false
 		super @options
@@ -105,7 +105,7 @@ class exports.ToggleSwitch extends Layer
 			height: 32
 			width: @options.width
 			y: @headerText.maxY
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 
 		@resizeContainer()
 		@toggle.parent = @container
@@ -136,9 +136,9 @@ class exports.ToggleSwitch extends Layer
 		@options.height = @headerText.height + @container.height
 
 	thumbPosition = 3
-	thumbBackgroundColor = Color.baseMediumHigh
-	toggleBackgroundColor = Color.transparent
-	toggleBorderColor = Color.baseMediumHigh
+	thumbBackgroundColor = SystemThemeColor.baseMediumHigh
+	toggleBackgroundColor = SystemThemeColor.transparent
+	toggleBorderColor = SystemThemeColor.baseMediumHigh
 
 	updateVisuals: (curEvent) ->
 		if @options.toggled
@@ -146,64 +146,64 @@ class exports.ToggleSwitch extends Layer
 			@onOffText.text = @options.onText
 
 			if @options.enabled
-				headerColor = Color.baseHigh
-				onOffTextColor = Color.baseHigh
+				headerColor = SystemThemeColor.baseHigh
+				onOffTextColor = SystemThemeColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						thumbBackgroundColor = Color.chromeWhite
-						toggleBackgroundColor = Color.listAccentHigh
-						toggleBorderColor = Color.transparent
+						thumbBackgroundColor = SystemThemeColor.chromeWhite
+						toggleBackgroundColor = SystemThemeColor.listAccentHigh
+						toggleBorderColor = SystemThemeColor.transparent
 					when "mousedown"
-						thumbBackgroundColor = Color.chromeWhite
-						toggleBackgroundColor = Color.baseMedium
-						toggleBorderColor = Color.transparent
+						thumbBackgroundColor = SystemThemeColor.chromeWhite
+						toggleBackgroundColor = SystemThemeColor.baseMedium
+						toggleBorderColor = SystemThemeColor.transparent
 						@options.toggled = false
 					when "mouseover"
-						thumbBackgroundColor = Color.chromeWhite
-						toggleBackgroundColor = Color.listAccentHigh
-						toggleBorderColor = Color.transparent
+						thumbBackgroundColor = SystemThemeColor.chromeWhite
+						toggleBackgroundColor = SystemThemeColor.listAccentHigh
+						toggleBorderColor = SystemThemeColor.transparent
 					else
-						thumbBackgroundColor = Color.chromeWhite
-						toggleBackgroundColor = Color.accent
-						toggleBorderColor = Color.accent
+						thumbBackgroundColor = SystemThemeColor.chromeWhite
+						toggleBackgroundColor = SystemThemeColor.accent
+						toggleBorderColor = SystemThemeColor.accent
 			else
-				thumbBackgroundColor = Color.baseLow
-				toggleBackgroundColor = Color.baseLow
-				toggleBorderColor = Color.baseLow
-				headerColor = Color.baseMediumLow
-				onOffTextColor = Color.baseMediumLow
+				thumbBackgroundColor = SystemThemeColor.baseLow
+				toggleBackgroundColor = SystemThemeColor.baseLow
+				toggleBorderColor = SystemThemeColor.baseLow
+				headerColor = SystemThemeColor.baseMediumLow
+				onOffTextColor = SystemThemeColor.baseMediumLow
 		else
 			thumbPosition = 3
 			@onOffText.text = @offText
 
 			if @options.enabled
-				headerColor = Color.baseHigh
-				onOffTextColor = Color.baseHigh
+				headerColor = SystemThemeColor.baseHigh
+				onOffTextColor = SystemThemeColor.baseHigh
 
 				if curEvent == "mouseup"
-					thumbBackgroundColor = Color.baseHigh
-					toggleBackgroundColor = Color.transparent
-					toggleBorderColor = Color.baseHigh
+					thumbBackgroundColor = SystemThemeColor.baseHigh
+					toggleBackgroundColor = SystemThemeColor.transparent
+					toggleBorderColor = SystemThemeColor.baseHigh
 				else if curEvent == "mousedown"
-					thumbBackgroundColor = Color.chromeWhite
-					toggleBackgroundColor = Color.baseMedium
-					toggleBorderColor = Color.transparent
+					thumbBackgroundColor = SystemThemeColor.chromeWhite
+					toggleBackgroundColor = SystemThemeColor.baseMedium
+					toggleBorderColor = SystemThemeColor.transparent
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					thumbBackgroundColor = Color.baseHigh
-					toggleBackgroundColor = Color.transparent
-					toggleBorderColor = Color.baseHigh
+					thumbBackgroundColor = SystemThemeColor.baseHigh
+					toggleBackgroundColor = SystemThemeColor.transparent
+					toggleBorderColor = SystemThemeColor.baseHigh
 				else
-					thumbBackgroundColor = Color.baseMediumHigh
-					toggleBackgroundColor = Color.transparent
-					toggleBorderColor = Color.baseMediumHigh
+					thumbBackgroundColor = SystemThemeColor.baseMediumHigh
+					toggleBackgroundColor = SystemThemeColor.transparent
+					toggleBorderColor = SystemThemeColor.baseMediumHigh
 			else
-				thumbBackgroundColor = Color.baseMediumLow
-				toggleBackgroundColor = Color.transparent
-				toggleBorderColor = Color.baseMediumLow
-				headerColor = Color.baseMediumLow
-				onOffTextColor = Color.baseMediumLow
+				thumbBackgroundColor = SystemThemeColor.baseMediumLow
+				toggleBackgroundColor = SystemThemeColor.transparent
+				toggleBorderColor = SystemThemeColor.baseMediumLow
+				headerColor = SystemThemeColor.baseMediumLow
+				onOffTextColor = SystemThemeColor.baseMediumLow
 
 		@headerText.color = headerColor
 		@onOffText.color = onOffTextColor

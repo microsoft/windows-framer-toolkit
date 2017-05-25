@@ -11,13 +11,13 @@ class MediaPlayerButton extends Type
 		@textAlign = "center"
 
 		@.onMouseOver ->
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = SystemThemeColor.listLow
 		@.onMouseDown ->
-			@.backgroundColor = Color.listMedium
+			@.backgroundColor = SystemThemeColor.listMedium
 		@.onMouseUp ->
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = SystemThemeColor.listLow
 		@.onMouseOut ->
-			@.backgroundColor = Color.transparent
+			@.backgroundColor = SystemThemeColor.transparent
 
 # Ideally duration would be read by file
 getDuration = (duration) ->
@@ -46,7 +46,7 @@ getTime = (time, elapsed) ->
 		formatTime(remainingTime)	
 		
 container = new Layer
-	backgroundColor: Color.altMedium
+	backgroundColor: SystemThemeColor.altMedium
 	width: Screen.width
 	height: 96
 	
@@ -81,7 +81,7 @@ leftButtons = new Layer
 	height: 48
 	width: leftBtnGlyphs.length * 48
 	maxY: container.maxY
-	backgroundColor: Color.transparent
+	backgroundColor: SystemThemeColor.transparent
 
 for i in [0..leftBtnGlyphs.length - 1]
 	button = new MediaPlayerButton
@@ -96,7 +96,7 @@ middleButtons = new Layer
 	height: 48
 	width: middleBtnGlyphs.length * 48
 	maxY: container.maxY
-	backgroundColor: Color.transparent
+	backgroundColor: SystemThemeColor.transparent
 	x: Align.center
 
 for i in [0..middleBtnGlyphs.length - 1]
@@ -113,7 +113,7 @@ rightButtons = new Layer
 	height: 48
 	width: rightBtnGlyphs.length * 48
 	maxY: container.maxY
-	backgroundColor: Color.transparent
+	backgroundColor: SystemThemeColor.transparent
 	x: Align.right
 	
 for i in [0..rightBtnGlyphs.length - 1]

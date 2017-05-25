@@ -1,6 +1,6 @@
 # AutoSuggestBox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 
 initalContentStringWidth = 0
 autoSuggestBoxWidth = 296
@@ -17,16 +17,16 @@ class contentElem extends Type
 	constructor: (@options) ->
 		@options.x ?= 10
 		@options.y ?= 4
-		@options.color ?= Color.baseHigh
+		@options.color ?= SystemThemeColor.baseHigh
 		super(@options)
 
 class glyphButton extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= 30
 		@options.height ?= 28
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		@options.icon ?= "\uE10A"
-		@options.iconColor ?= Color.chromeBlackMedium
+		@options.iconColor ?= SystemThemeColor.chromeBlackMedium
 		super @options
 		@createGlyphButton()
 
@@ -47,7 +47,7 @@ class glyphButton extends Layer
 			name: "button plate"
 			width: @options.width
 			height: @options.height
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			y: wrapBorderWidth
 
 		@glyph = new Type
@@ -72,19 +72,19 @@ class glyphButton extends Layer
 	updateGlyphVisuals: (curEvent) ->
 		switch curEvent
 			when "mouseOver"
-				@glyph.color = Color.accent
+				@glyph.color = SystemThemeColor.accent
 			when "mouseDown"
-				@glyph.color = Color.chromeWhite
-				@plate.backgroundColor = Color.accent
+				@glyph.color = SystemThemeColor.chromeWhite
+				@plate.backgroundColor = SystemThemeColor.accent
 			when "mouseUp"
-				@glyph.color = Color.accent
-				@plate.backgroundColor = Color.transparent
+				@glyph.color = SystemThemeColor.accent
+				@plate.backgroundColor = SystemThemeColor.transparent
 			when "mouseOut"
-				@glyph.color = Color.chromeBlackMedium
+				@glyph.color = SystemThemeColor.chromeBlackMedium
 
 class suggestItem extends Layer
 	constructor: (@options={}) ->
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		@options.width ?= autoSuggestBoxWidth
 		@options.height ?= suggestionItemHeight
 		@options.item ?= ""
@@ -131,19 +131,19 @@ class suggestItem extends Layer
 	updateItemVisuals: (curEvent) ->
 		switch curEvent
 			when "mouseOver"
-				@plate.backgroundColor = Color.listAccentLow
+				@plate.backgroundColor = SystemThemeColor.listAccentLow
 			when "mouseDown"
-				@plate.backgroundColor = Color.listAccentHigh
+				@plate.backgroundColor = SystemThemeColor.listAccentHigh
 			when "mouseUp"
-				@plate.backgroundColor = Color.listAccentLow
+				@plate.backgroundColor = SystemThemeColor.listAccentLow
 			when "mouseOut"
-				@plate.backgroundColor = Color.transparent
+				@plate.backgroundColor = SystemThemeColor.transparent
 
 class exports.AutoSuggestBox extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= autoSuggestBoxWidth
 		@options.height ?= @setRootHeight()
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		@options.header ?= "Header"
 		@options.content ?= "Seat"
 		@options.hint ?= "Hint text"
@@ -200,7 +200,7 @@ class exports.AutoSuggestBox extends Layer
 		@autoSuggestBox = new Layer
 			parent: @
 			name: "auto suggest box"
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 			width: autoSuggestBoxWidth
 			height: @setRootHeight()
 
@@ -214,8 +214,8 @@ class exports.AutoSuggestBox extends Layer
 			name: "content wrapper"
 			width: autoSuggestBoxWidth
 			height: 32
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.chromeDisabledLow
+			backgroundColor: SystemThemeColor.altMediumLow
+			borderColor: SystemThemeColor.chromeDisabledLow
 			borderWidth: 2
 			y: @headerType.height + 8
 
@@ -223,13 +223,13 @@ class exports.AutoSuggestBox extends Layer
 			parent: @contentWrap
 			name: "hint"
 			text: @options.hint
-			color: Color.baseMedium
+			color: SystemThemeColor.baseMedium
 
 		@contentString = new contentElem
 			parent: @contentWrap
 			name: "content string"
 			text: @options.content
-			color: Color.baseHigh
+			color: SystemThemeColor.baseHigh
 			visible: false
 		initalContentStringWidth = @contentString.width
 
@@ -238,7 +238,7 @@ class exports.AutoSuggestBox extends Layer
 			name: "pipe"
 			x: @contentString.width + @contentString.x
 			y: 3
-			color: Color.baseHigh
+			color: SystemThemeColor.baseHigh
 			text: "|"
 			visible: false
 
@@ -263,8 +263,8 @@ class exports.AutoSuggestBox extends Layer
 			width: autoSuggestBoxWidth
 			height: if @focused then 0 else @setSuggestionsHeight()
 			opacity: if @focused then 0.0 else 1.0
-			backgroundColor: Color.chromeMedium
-			borderColor: Color.chromeHigh
+			backgroundColor: SystemThemeColor.chromeMedium
+			borderColor: SystemThemeColor.chromeHigh
 			borderWidth: 1
 			scrollHorizontal: false
 
@@ -337,14 +337,14 @@ class exports.AutoSuggestBox extends Layer
 			@contentString.visible = true
 			@contentString.textOverflow = "clip"
 			@pipe.visible = true
-			@contentWrap.borderColor = Color.accent
+			@contentWrap.borderColor = SystemThemeColor.accent
 			@suggestionScroll.animate("stateB")
 		else
 			@cancelButton.visible = false
 			@hintString.visible = true
 			@contentString.visible = false
 			@pipe.visible = false
-			@contentWrap.borderColor = Color.chromeDisabledLow
+			@contentWrap.borderColor = SystemThemeColor.chromeDisabledLow
 			@suggestionScroll.animate("stateA")
 
 		@pipe.x = @contentString.width + @contentString.x
@@ -352,11 +352,11 @@ class exports.AutoSuggestBox extends Layer
 	updateBoxVisuals: (curEvent) ->
 		switch curEvent
 			when "mouseOver"
-				@contentWrap.borderColor = if @focused then Color.accent else Color.chromeAltLow
+				@contentWrap.borderColor = if @focused then SystemThemeColor.accent else SystemThemeColor.chromeAltLow
 			when "mouseDown"
 				@focused = true
 			when "mouseOut"
-				@contentWrap.borderColor = if @focused then Color.accent else Color.chromeDisabledLow
+				@contentWrap.borderColor = if @focused then SystemThemeColor.accent else SystemThemeColor.chromeDisabledLow
 
 	# ANIMATIONS
 	playPipeAnim: ->

@@ -8,7 +8,7 @@ class exports.ContextMenu extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= 136
 		@options.height ?= 32 + totalVerticalPadding
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemThemeColor.transparent
 		@options.items ?= undefined
 		@options.disabledItems ?= undefined
 		super @options
@@ -37,8 +37,8 @@ class exports.ContextMenu extends Layer
 		@container = new Layer
 			name: "Container"
 			parent: @
-			backgroundColor: Color.chromeMediumLow
-			borderColor: Color.chromeHigh
+			backgroundColor: SystemThemeColor.chromeMediumLow
+			borderColor: SystemThemeColor.chromeHigh
 			borderWidth: 1
 			width: @options.width
 			height: @options.height
@@ -48,7 +48,7 @@ class exports.ContextMenu extends Layer
 			parent: @container
 			width: @options.width
 			height: @options.height - totalVerticalPadding
-			backgroundColor: Color.transparent
+			backgroundColor: SystemThemeColor.transparent
 
 		@itemsContainer.centerY()
 
@@ -122,20 +122,20 @@ class exports.ContextMenu extends Layer
 
 	updateVisuals: (curEvent, itemBackground, itemText, itemEnabled) ->
 		if itemEnabled
-			labelColor = Color.baseHigh
+			labelColor = SystemThemeColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					itemBackgroundColor = Color.listLow
+					itemBackgroundColor = SystemThemeColor.listLow
 				when "mousedown"
-					itemBackgroundColor = Color.listMedium
+					itemBackgroundColor = SystemThemeColor.listMedium
 				when "mouseover"
-					itemBackgroundColor = Color.listLow
+					itemBackgroundColor = SystemThemeColor.listLow
 				else
-					itemBackgroundColor = Color.transparent
+					itemBackgroundColor = SystemThemeColor.transparent
 		else
-			labelColor = Color.baseMediumLow
-			itemBackgroundColor = Color.transparent
+			labelColor = SystemThemeColor.baseMediumLow
+			itemBackgroundColor = SystemThemeColor.transparent
 
 		itemBackground.backgroundColor = itemBackgroundColor
 		itemText.color = labelColor

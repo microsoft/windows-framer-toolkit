@@ -36,13 +36,13 @@ class AppBarButton extends Type
 		@textAlign = "center"
 
 		@.onMouseOver ->
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = SystemThemeColor.listLow
 		@.onMouseDown ->
-			@.backgroundColor = Color.listMedium
+			@.backgroundColor = SystemThemeColor.listMedium
 		@.onMouseUp ->
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = SystemThemeColor.listLow
 		@.onMouseOut ->
-			@.backgroundColor = Color.transparent
+			@.backgroundColor = SystemThemeColor.transparent
 
 class AppBarButtonLabel extends Type
 	constructor: (options) ->
@@ -62,7 +62,7 @@ minimalLabel = new Type
 
 # layer to clip the minimalModeMenu when it's collapsed
 minimalModeClip = new Layer
-	backgroundColor: Color.transparent
+	backgroundColor: SystemThemeColor.transparent
 	width: Screen.width
 	height: screen.height
 	clip: true
@@ -72,7 +72,7 @@ minimalMode = new Layer
 	y: minimalLabel.maxY + 24
 	height: minimalHeight
 	width: Screen.width
-	backgroundColor: Color.chromeMedium
+	backgroundColor: SystemThemeColor.chromeMedium
 
 minimalModeClip.y = minimalMode.y
 
@@ -120,7 +120,7 @@ compactLabel = new Type
 
 # layer to clip the compactModeMenu when it's collapsed
 compactModeClip = new Layer
-	backgroundColor: Color.transparent
+	backgroundColor: SystemThemeColor.transparent
 	width: Screen.width
 	height: screen.height
 	clip: true
@@ -130,7 +130,7 @@ compactMode = new Layer
 	y: compactLabel.maxY + 24
 	height: compactHeight
 	width: Screen.width
-	backgroundColor: Color.chromeMedium
+	backgroundColor: SystemThemeColor.chromeMedium
 	clip: true
 
 compactModeClip.y = compactMode.y
@@ -161,7 +161,7 @@ divider = new Layer
 	parent: compactMode
 	height: 20
 	width: 1
-	backgroundColor: Color.baseLow
+	backgroundColor: SystemThemeColor.baseLow
 
 appBarButton2 = new AppBarButton
 	parent: compactMode
@@ -194,7 +194,7 @@ appBarButton1.maxX = divider.x - 16
 
 labels = new Layer
 	parent: compactMode
-	backgroundColor: Color.transparent
+	backgroundColor: SystemThemeColor.transparent
 	y: 38
 	width: compactMode.width
 	opacity: 0
