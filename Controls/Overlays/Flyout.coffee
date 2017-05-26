@@ -1,6 +1,6 @@
 # Flyout requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 topPadding = 11
 leftRightPadding = 12
@@ -16,7 +16,7 @@ class exports.Flyout extends Layer
 		@options.label ?= "Label"
 		@options.width ?= 96
 		@options.height ?= 44
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		super @options
 		@createLayers()
 
@@ -41,8 +41,8 @@ class exports.Flyout extends Layer
 		@container = new Layer
 			parent: @
 			name: "Flyout Background"
-			backgroundColor: Color.chromeMediumLow
-			borderColor: Color.chromeHigh
+			backgroundColor: UWPColor.chromeMediumLow
+			borderColor: UWPColor.chromeHigh
 			borderWidth: 1
 			width: @labelText.width + leftRightPadding * 2
 			height: @labelText.height + topPadding + bottomPadding

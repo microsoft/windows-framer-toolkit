@@ -1,6 +1,6 @@
 # PasswordBox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 textBoxWidth = 296
 textBoxHeight = 60
@@ -10,14 +10,14 @@ class contentElem extends Type
 	constructor: (@options) ->
 		@options.x = 10
 		@options.y = 4
-		@options.color ?= Color.baseHigh
+		@options.color ?= UWPColor.baseHigh
 		super(@options)
 
 class exports.PasswordBox extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= textBoxWidth
 		@options.height ?= @setPasswordBoxHeight()
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		@options.header ?= "Password"
 		@options.content ?= ""
 		@options.hint ?="Enter password"
@@ -73,7 +73,7 @@ class exports.PasswordBox extends Layer
 
 		@passwordBox = new Layer
 			parent: @
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			width: textBoxWidth
 			height: @setPasswordBoxHeight()
 
@@ -86,14 +86,14 @@ class exports.PasswordBox extends Layer
 			width: textBoxWidth
 			height: 32
 			y: @headerType.height + 8
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.chromeDisabledLow
+			backgroundColor: UWPColor.altMediumLow
+			borderColor: UWPColor.chromeDisabledLow
 			borderWidth: wrapBorderWidth
 
 		@hintString = new contentElem
 			parent: @contentWrap
 			text: @options.hint
-			color: Color.baseMedium
+			color: UWPColor.baseMedium
 			visible: true
 
 		@contentString = new contentElem
@@ -110,7 +110,7 @@ class exports.PasswordBox extends Layer
 			parent: @contentWrap
 			x: @contentString.width + @contentString.x
 			y: 3
-			color: Color.baseHigh
+			color: UWPColor.baseHigh
 			text: "|"
 			visible: false
 
@@ -120,7 +120,7 @@ class exports.PasswordBox extends Layer
 			height: 28
 			y: @contentWrap.y + 2
 			x: @contentWrap.x + @contentWrap.width - (28 + wrapBorderWidth)
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			visible: false
 
 		@previewGlyph = new Type
@@ -130,7 +130,7 @@ class exports.PasswordBox extends Layer
 			fontSize: 16
 			uwpStyle: "glyph"
 			text: "\uE052"
-			color: Color.chromeBlackMedium
+			color: UWPColor.chromeBlackMedium
 
 		@setFocus()
 		@updateBoxVisuals()
@@ -164,49 +164,49 @@ class exports.PasswordBox extends Layer
 			@hintString.visible = false
 			@contentGlyph.visible = true
 			@pipe.visible = true
-			@contentWrap.borderColor = Color.accent
+			@contentWrap.borderColor = UWPColor.accent
 		else
 			@pipe.visible = false
 			@previewButton.visible = false
-			@contentWrap.borderColor = Color.chromeDisabledLow
+			@contentWrap.borderColor = UWPColor.chromeDisabledLow
 
 		@pipe.x = @contentGlyph.width + @contentGlyph.x
 
 	updateBoxVisuals: (curEvent) ->
 		if @disabled
-			@headerType.color = Color.baseMediumLow
-			@contentWrap.backgroundColor = Color.baseLow
+			@headerType.color = UWPColor.baseMediumLow
+			@contentWrap.backgroundColor = UWPColor.baseLow
 			@contentWrap.borderWidth = 0
-			@hintString.color = Color.baseMediumLow
+			@hintString.color = UWPColor.baseMediumLow
 		else
-			@header.color = Color.baseHigh
-			@contentWrap.backgroundColor = Color.transparent
+			@header.color = UWPColor.baseHigh
+			@contentWrap.backgroundColor = UWPColor.transparent
 			@contentWrap.borderWidth = wrapBorderWidth
-			@hintString.color = Color.baseMedium
+			@hintString.color = UWPColor.baseMedium
 
 			switch curEvent
 				when "mouseOver"
-					@contentWrap.borderColor = if @focused then Color.accent else Color.chromeAltLow
+					@contentWrap.borderColor = if @focused then UWPColor.accent else UWPColor.chromeAltLow
 				when "mouseDown"
 					@focused = true
 					@setFocus()
 				when "mouseOut"
-					@contentWrap.borderColor = if @focused then Color.accent else Color.chromeDisabledLow
+					@contentWrap.borderColor = if @focused then UWPColor.accent else UWPColor.chromeDisabledLow
 
 	updateCloseBtnVisuals: (curEvent) ->
 		switch curEvent
-			when "mouseOver" then @previewGlyph.color = Color.accent
+			when "mouseOver" then @previewGlyph.color = UWPColor.accent
 			when "mouseDown"
-				@previewButton.backgroundColor = Color.accent
-				@previewGlyph.color = Color.altHigh
+				@previewButton.backgroundColor = UWPColor.accent
+				@previewGlyph.color = UWPColor.altHigh
 				@contentString.visible = true
 				@contentString.textOverflow = "clip"
 				@contentGlyph.visible = false
 				@pipe.x = @contentString.width + @contentString.x
-			when "mouseOut" then @previewGlyph.color = Color.chromeBlackMedium
+			when "mouseOut" then @previewGlyph.color = UWPColor.chromeBlackMedium
 			when "mouseUp"
-				@previewButton.backgroundColor = Color.transparent
-				@previewGlyph.color = Color.accent
+				@previewButton.backgroundColor = UWPColor.transparent
+				@previewGlyph.color = UWPColor.accent
 				@contentString.visible = false
 				@contentGlyph.visible = true
 				@contentGlyph.textOverflow = "clip"

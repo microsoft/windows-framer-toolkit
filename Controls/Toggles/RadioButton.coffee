@@ -1,6 +1,6 @@
 # RadioButton requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 class exports.RadioButton extends Layer
 	constructor: (@options={}) ->
@@ -58,7 +58,7 @@ class exports.RadioButton extends Layer
 			height: @outerCircleSize
 			borderRadius: 10
 			borderWidth: 2
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			y: 6
 
 		@innerCircle = new Layer
@@ -82,7 +82,7 @@ class exports.RadioButton extends Layer
 			parent: @
 			name: "Container"
 			width: @options.width
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 
 		@resizeContainer()
 		@outerCircle.parent = @container
@@ -117,48 +117,48 @@ class exports.RadioButton extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.toggled
 			if @options.enabled
-				labelColor = Color.baseHigh
+				labelColor = UWPColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						outerCircleBorderColor = Color.accent
-						innerCircleBackgroundColor = Color.baseHigh
+						outerCircleBorderColor = UWPColor.accent
+						innerCircleBackgroundColor = UWPColor.baseHigh
 					when "mousedown"
-						outerCircleBorderColor = Color.baseMedium
-						innerCircleBackgroundColor = Color.baseMedium
+						outerCircleBorderColor = UWPColor.baseMedium
+						innerCircleBackgroundColor = UWPColor.baseMedium
 						@options.toggled = false
 					when "mouseover"
-						outerCircleBorderColor = Color.accent
-						innerCircleBackgroundColor = Color.baseHigh
+						outerCircleBorderColor = UWPColor.accent
+						innerCircleBackgroundColor = UWPColor.baseHigh
 					else
-						outerCircleBorderColor = Color.accent
-						innerCircleBackgroundColor = Color.baseMediumHigh
+						outerCircleBorderColor = UWPColor.accent
+						innerCircleBackgroundColor = UWPColor.baseMediumHigh
 			else
-				labelColor = Color.baseMediumLow
-				outerCircleBorderColor = Color.baseMediumLow
-				innerCircleBackgroundColor = Color.baseMediumLow
+				labelColor = UWPColor.baseMediumLow
+				outerCircleBorderColor = UWPColor.baseMediumLow
+				innerCircleBackgroundColor = UWPColor.baseMediumLow
 				@container.off Events.TapStart
 		else
 			if @options.enabled
-				labelColor = Color.baseHigh
+				labelColor = UWPColor.baseHigh
 
 				if curEvent == "mouseup"
-					outerCircleBorderColor = Color.baseHigh
-					innerCircleBackgroundColor = Color.transparent
+					outerCircleBorderColor = UWPColor.baseHigh
+					innerCircleBackgroundColor = UWPColor.transparent
 				else if curEvent == "mousedown"
-					outerCircleBorderColor = Color.baseMedium
-					innerCircleBackgroundColor = Color.baseMedium
+					outerCircleBorderColor = UWPColor.baseMedium
+					innerCircleBackgroundColor = UWPColor.baseMedium
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					outerCircleBorderColor = Color.baseHigh
-					innerCircleBackgroundColor = Color.transparent
+					outerCircleBorderColor = UWPColor.baseHigh
+					innerCircleBackgroundColor = UWPColor.transparent
 				else
-					outerCircleBorderColor = Color.baseMediumHigh
-					innerCircleBackgroundColor = Color.transparent
+					outerCircleBorderColor = UWPColor.baseMediumHigh
+					innerCircleBackgroundColor = UWPColor.transparent
 			else
-				labelColor = Color.baseMediumLow
-				outerCircleBorderColor = Color.baseMediumLow
-				innerCircleBackgroundColor = Color.transparent
+				labelColor = UWPColor.baseMediumLow
+				outerCircleBorderColor = UWPColor.baseMediumLow
+				innerCircleBackgroundColor = UWPColor.transparent
 				@container.off Events.TapStart
 
 		@labelText.color = labelColor

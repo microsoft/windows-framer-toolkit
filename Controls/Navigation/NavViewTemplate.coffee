@@ -2,13 +2,13 @@
 document.body.style.cursor = "auto"
 
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 m = require "motionCurves"
 a = require "acrylic"
 
-hoverColor = Color.listLow
-pressColor = Color.listMedium
-restColor = Color.transparent
+hoverColor = UWPColor.listLow
+pressColor = UWPColor.listMedium
+restColor = UWPColor.transparent
 
 contentMargin = 24
 
@@ -21,7 +21,7 @@ appWindow = new Layer
 	y: 100
 	width: 1024
 	height: 32
-	backgroundColor: Color.transparent
+	backgroundColor: UWPColor.transparent
 
 appWindow.centerX()
 appWindow.draggable.enabled = true
@@ -32,7 +32,7 @@ leftPane = new Layer
 	width: 320
 	height: 768
 	clip: true
-	backgroundColor: Color.transparent
+	backgroundColor: UWPColor.transparent
 
 leftPane.states =
 	collapsed:
@@ -45,14 +45,14 @@ leftPane.states =
 
 leftPane.stateSwitch("expanded")
 
-a.acrylic(Color.altHigh, 0.6, leftPane)
+a.acrylic(UWPColor.altHigh, 0.6, leftPane)
 
 mainPane = new Layer
 	parent: appWindow
 	x: leftPane.maxX
 	width: appWindow.width - leftPane.width
 	height: 768
-	backgroundColor: Color.altHigh
+	backgroundColor: UWPColor.altHigh
 
 mainPane.states =
 	collapsed:
@@ -71,7 +71,7 @@ titleBar = new Layer
 	parent: appWindow
 	width: appWindow.width
 	height: 32
-	backgroundColor: Color.transparent
+	backgroundColor: UWPColor.transparent
 
 backButton = new Type
 	parent: titleBar
@@ -222,7 +222,7 @@ footerItemData = [
 itemsContainer = new Layer
 	parent: leftPane
 	name: "Items Container"
-	backgroundColor: Color.transparent
+	backgroundColor: UWPColor.transparent
 	width: leftPane.width
 	height: navItemData.length * 40
 	y: hamburger.maxY
@@ -230,7 +230,7 @@ itemsContainer = new Layer
 footerItemsContainer = new Layer
 	parent: leftPane
 	name: "Footer Items Container"
-	backgroundColor: Color.transparent
+	backgroundColor: UWPColor.transparent
 	width: leftPane.width
 	height: footerItemData.length * 40
 	maxY: leftPane.maxY - 8
@@ -241,14 +241,14 @@ initNavItems = ->
 		name: "Nav Item " + i
 		width: leftPane.width
 		height: 40
-		backgroundColor: Color.tranparent
+		backgroundColor: UWPColor.tranparent
 		y: i * 40
 
 	selection = new Layer
 		parent: navItem
 		width: 6
 		height: 24
-		backgroundColor: Color.accent
+		backgroundColor: UWPColor.accent
 		y: 8
 		visible: false
 
@@ -301,7 +301,7 @@ initFooterItems = ->
 		parent: footerItemsContainer
 		width: leftPane.width
 		height: 40
-		backgroundColor: Color.transparent
+		backgroundColor: UWPColor.transparent
 		y: i * 40
 
 	footerItemIcon = new Type

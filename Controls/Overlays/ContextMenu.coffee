@@ -1,6 +1,6 @@
 # ContextMenu requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 totalVerticalPadding = 16
 
@@ -8,7 +8,7 @@ class exports.ContextMenu extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= 136
 		@options.height ?= 32 + totalVerticalPadding
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		@options.items ?= undefined
 		@options.disabledItems ?= undefined
 		super @options
@@ -37,8 +37,8 @@ class exports.ContextMenu extends Layer
 		@container = new Layer
 			name: "Container"
 			parent: @
-			backgroundColor: Color.chromeMediumLow
-			borderColor: Color.chromeHigh
+			backgroundColor: UWPColor.chromeMediumLow
+			borderColor: UWPColor.chromeHigh
 			borderWidth: 1
 			width: @options.width
 			height: @options.height
@@ -48,7 +48,7 @@ class exports.ContextMenu extends Layer
 			parent: @container
 			width: @options.width
 			height: @options.height - totalVerticalPadding
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 
 		@itemsContainer.centerY()
 
@@ -122,20 +122,20 @@ class exports.ContextMenu extends Layer
 
 	updateVisuals: (curEvent, itemBackground, itemText, itemEnabled) ->
 		if itemEnabled
-			labelColor = Color.baseHigh
+			labelColor = UWPColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					itemBackgroundColor = Color.listLow
+					itemBackgroundColor = UWPColor.listLow
 				when "mousedown"
-					itemBackgroundColor = Color.listMedium
+					itemBackgroundColor = UWPColor.listMedium
 				when "mouseover"
-					itemBackgroundColor = Color.listLow
+					itemBackgroundColor = UWPColor.listLow
 				else
-					itemBackgroundColor = Color.transparent
+					itemBackgroundColor = UWPColor.transparent
 		else
-			labelColor = Color.baseMediumLow
-			itemBackgroundColor = Color.transparent
+			labelColor = UWPColor.baseMediumLow
+			itemBackgroundColor = UWPColor.transparent
 
 		itemBackground.backgroundColor = itemBackgroundColor
 		itemText.color = labelColor
