@@ -1,6 +1,6 @@
 # Checkbox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 class exports.CheckBox extends Layer
 	constructor: (@options={}) ->
@@ -57,7 +57,7 @@ class exports.CheckBox extends Layer
 			width: @boxSize
 			height: @boxSize
 			borderWidth: 2
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			y: 6
 
 		@check = new Layer
@@ -83,7 +83,7 @@ class exports.CheckBox extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			width: @options.width
 
 		@resizeContainer()
@@ -119,54 +119,54 @@ class exports.CheckBox extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.toggled
 			if @options.enabled
-				labelColor = SystemThemeColor.baseHigh
+				labelColor = SystemColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						boxBorderColor = SystemThemeColor.baseHigh
-						boxBackgroundColor = SystemThemeColor.accent
-						checkColor = SystemThemeColor.chromeWhite
+						boxBorderColor = SystemColor.baseHigh
+						boxBackgroundColor = SystemColor.accent
+						checkColor = SystemColor.chromeWhite
 					when "mousedown"
-						boxBorderColor = SystemThemeColor.transparent
-						boxBackgroundColor = SystemThemeColor.baseMedium
-						checkColor = SystemThemeColor.chromeWhite
+						boxBorderColor = SystemColor.transparent
+						boxBackgroundColor = SystemColor.baseMedium
+						checkColor = SystemColor.chromeWhite
 						@options.toggled = false
 					when "mouseover"
-						boxBorderColor = SystemThemeColor.baseHigh
-						boxBackgroundColor = SystemThemeColor.accent
-						checkColor = SystemThemeColor.chromeWhite
+						boxBorderColor = SystemColor.baseHigh
+						boxBackgroundColor = SystemColor.accent
+						checkColor = SystemColor.chromeWhite
 					else
-						boxBorderColor = SystemThemeColor.transparent
-						boxBackgroundColor = SystemThemeColor.accent
-						checkColor = SystemThemeColor.chromeWhite
+						boxBorderColor = SystemColor.transparent
+						boxBackgroundColor = SystemColor.accent
+						checkColor = SystemColor.chromeWhite
 			else
-				labelColor = SystemThemeColor.baseMediumLow
-				boxBorderColor = SystemThemeColor.baseMediumLow
-				boxBackgroundColor = SystemThemeColor.transparent
-				checkColor = SystemThemeColor.baseMediumLow
+				labelColor = SystemColor.baseMediumLow
+				boxBorderColor = SystemColor.baseMediumLow
+				boxBackgroundColor = SystemColor.transparent
+				checkColor = SystemColor.baseMediumLow
 				@container.off Events.TapStart
 		else
 			if @options.enabled
-				labelColor = SystemThemeColor.baseHigh
-				checkColor = SystemThemeColor.transparent
+				labelColor = SystemColor.baseHigh
+				checkColor = SystemColor.transparent
 
 				if curEvent == "mouseup"
-					boxBorderColor = SystemThemeColor.baseHigh
-					boxBackgroundColor = SystemThemeColor.transparent
+					boxBorderColor = SystemColor.baseHigh
+					boxBackgroundColor = SystemColor.transparent
 				else if curEvent == "mousedown"
-					boxBorderColor = SystemThemeColor.transparent
-					boxBackgroundColor = SystemThemeColor.baseMedium
+					boxBorderColor = SystemColor.transparent
+					boxBackgroundColor = SystemColor.baseMedium
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					boxBorderColor = SystemThemeColor.baseHigh
-					boxBackgroundColor = SystemThemeColor.transparent
+					boxBorderColor = SystemColor.baseHigh
+					boxBackgroundColor = SystemColor.transparent
 				else
-					boxBorderColor = SystemThemeColor.baseMediumHigh
-					boxBackgroundColor = SystemThemeColor.transparent
+					boxBorderColor = SystemColor.baseMediumHigh
+					boxBackgroundColor = SystemColor.transparent
 			else
-				labelColor = SystemThemeColor.baseMediumLow
-				boxBorderColor = SystemThemeColor.baseMediumLow
-				boxBackgroundColor = SystemThemeColor.transparent
+				labelColor = SystemColor.baseMediumLow
+				boxBorderColor = SystemColor.baseMediumLow
+				boxBackgroundColor = SystemColor.transparent
 				@container.off Events.TapStart
 
 		@labelText.color = labelColor

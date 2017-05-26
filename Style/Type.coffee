@@ -1,11 +1,11 @@
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 class exports.Type extends TextLayer
 
 	constructor: (@options={}) ->
 		@options.uwpStyle ?= "body"
 		@options.fontFamily ?= "Segoe UI"
-		@options.color ?= SystemThemeColor.baseHigh
+		@options.color ?= SystemColor.baseHigh
 		@options.fontSize ?= 15
 		@options.lineHeight ?= 1.333
 		@options.fontWeight ?= 400

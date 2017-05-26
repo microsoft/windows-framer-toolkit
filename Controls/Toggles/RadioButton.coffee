@@ -1,6 +1,6 @@
 # RadioButton requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 class exports.RadioButton extends Layer
 	constructor: (@options={}) ->
@@ -58,7 +58,7 @@ class exports.RadioButton extends Layer
 			height: @outerCircleSize
 			borderRadius: 10
 			borderWidth: 2
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			y: 6
 
 		@innerCircle = new Layer
@@ -82,7 +82,7 @@ class exports.RadioButton extends Layer
 			parent: @
 			name: "Container"
 			width: @options.width
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 
 		@resizeContainer()
 		@outerCircle.parent = @container
@@ -117,48 +117,48 @@ class exports.RadioButton extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.toggled
 			if @options.enabled
-				labelColor = SystemThemeColor.baseHigh
+				labelColor = SystemColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						outerCircleBorderColor = SystemThemeColor.accent
-						innerCircleBackgroundColor = SystemThemeColor.baseHigh
+						outerCircleBorderColor = SystemColor.accent
+						innerCircleBackgroundColor = SystemColor.baseHigh
 					when "mousedown"
-						outerCircleBorderColor = SystemThemeColor.baseMedium
-						innerCircleBackgroundColor = SystemThemeColor.baseMedium
+						outerCircleBorderColor = SystemColor.baseMedium
+						innerCircleBackgroundColor = SystemColor.baseMedium
 						@options.toggled = false
 					when "mouseover"
-						outerCircleBorderColor = SystemThemeColor.accent
-						innerCircleBackgroundColor = SystemThemeColor.baseHigh
+						outerCircleBorderColor = SystemColor.accent
+						innerCircleBackgroundColor = SystemColor.baseHigh
 					else
-						outerCircleBorderColor = SystemThemeColor.accent
-						innerCircleBackgroundColor = SystemThemeColor.baseMediumHigh
+						outerCircleBorderColor = SystemColor.accent
+						innerCircleBackgroundColor = SystemColor.baseMediumHigh
 			else
-				labelColor = SystemThemeColor.baseMediumLow
-				outerCircleBorderColor = SystemThemeColor.baseMediumLow
-				innerCircleBackgroundColor = SystemThemeColor.baseMediumLow
+				labelColor = SystemColor.baseMediumLow
+				outerCircleBorderColor = SystemColor.baseMediumLow
+				innerCircleBackgroundColor = SystemColor.baseMediumLow
 				@container.off Events.TapStart
 		else
 			if @options.enabled
-				labelColor = SystemThemeColor.baseHigh
+				labelColor = SystemColor.baseHigh
 
 				if curEvent == "mouseup"
-					outerCircleBorderColor = SystemThemeColor.baseHigh
-					innerCircleBackgroundColor = SystemThemeColor.transparent
+					outerCircleBorderColor = SystemColor.baseHigh
+					innerCircleBackgroundColor = SystemColor.transparent
 				else if curEvent == "mousedown"
-					outerCircleBorderColor = SystemThemeColor.baseMedium
-					innerCircleBackgroundColor = SystemThemeColor.baseMedium
+					outerCircleBorderColor = SystemColor.baseMedium
+					innerCircleBackgroundColor = SystemColor.baseMedium
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					outerCircleBorderColor = SystemThemeColor.baseHigh
-					innerCircleBackgroundColor = SystemThemeColor.transparent
+					outerCircleBorderColor = SystemColor.baseHigh
+					innerCircleBackgroundColor = SystemColor.transparent
 				else
-					outerCircleBorderColor = SystemThemeColor.baseMediumHigh
-					innerCircleBackgroundColor = SystemThemeColor.transparent
+					outerCircleBorderColor = SystemColor.baseMediumHigh
+					innerCircleBackgroundColor = SystemColor.transparent
 			else
-				labelColor = SystemThemeColor.baseMediumLow
-				outerCircleBorderColor = SystemThemeColor.baseMediumLow
-				innerCircleBackgroundColor = SystemThemeColor.transparent
+				labelColor = SystemColor.baseMediumLow
+				outerCircleBorderColor = SystemColor.baseMediumLow
+				innerCircleBackgroundColor = SystemColor.transparent
 				@container.off Events.TapStart
 
 		@labelText.color = labelColor

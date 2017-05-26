@@ -1,6 +1,6 @@
 # TextBox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 initalContentStringWidth = 0
 textBoxWidth = 296
@@ -10,7 +10,7 @@ class exports.TextBox extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= textBoxWidth
 		@options.height ?= @setTextBoxHeight()
-		@options.backgroundColor ?= SystemThemeColor.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		@options.header ?= "Control header"
 		@options.content ?= ""
 		@options.hint ?="Hint string"
@@ -57,7 +57,7 @@ class exports.TextBox extends Layer
 
 		@textBox = new Layer
 			parent: @
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			width: textBoxWidth
 			height: @setTextBoxHeight()
 
@@ -69,8 +69,8 @@ class exports.TextBox extends Layer
 			parent: @textBox
 			width: textBoxWidth
 			height: 32
-			backgroundColor: SystemThemeColor.altMediumLow
-			borderColor: SystemThemeColor.chromeDisabledLow
+			backgroundColor: SystemColor.altMediumLow
+			borderColor: SystemColor.chromeDisabledLow
 			borderWidth: 2
 			y: @headerType.height + 8
 
@@ -78,14 +78,14 @@ class exports.TextBox extends Layer
 			parent: @textBoxContent
 			x: 10
 			y: 4
-			color: SystemThemeColor.baseMedium
+			color: SystemColor.baseMedium
 			text: @options.hint
 
 		@contentString = new Type
 			parent: @textBoxContent
 			x: 10
 			y: 4
-			color: SystemThemeColor.baseHigh
+			color: SystemColor.baseHigh
 			text: @options.content
 			textOverflow: "clip"
 			visible: false
@@ -95,7 +95,7 @@ class exports.TextBox extends Layer
 			parent: @textBoxContent
 			x: @contentString.width + @contentString.x
 			y: 3
-			color: SystemThemeColor.baseHigh
+			color: SystemColor.baseHigh
 			text: "|"
 			visible: false
 
@@ -104,7 +104,7 @@ class exports.TextBox extends Layer
 			width: 30
 			height: 30
 			x: Align.right
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			visible: false
 
 		@closeGlyph = new Type
@@ -114,7 +114,7 @@ class exports.TextBox extends Layer
 			fontSize: 12
 			uwpStyle: "glyph"
 			text: "\uE10A"
-			color: SystemThemeColor.chromeBlackMedium
+			color: SystemColor.chromeBlackMedium
 
 		@setFocus()
 		@setHintVisiblity()
@@ -158,14 +158,14 @@ class exports.TextBox extends Layer
 			stringMaxWidth = if @contentString.width >= focusedStringMaxWidth then focusedStringMaxWidth else @contentString.width
 			@hintString.visible = false
 			@pipe.visible = true
-			@textBoxContent.borderColor = SystemThemeColor.accent
+			@textBoxContent.borderColor = SystemColor.accent
 		else
 			@setHintVisiblity()
 
 			stringMaxWidth = if @contentString.width >= unfocusedStringMaxWidth then unfocusedStringMaxWidth else @contentString.width
 			@pipe.visible = false
 			@closeButton.visible = false
-			@textBoxContent.borderColor = SystemThemeColor.chromeDisabledLow
+			@textBoxContent.borderColor = SystemColor.chromeDisabledLow
 
 		@contentString.width = stringMaxWidth
 		@pipe.x = @contentString.width + @contentString.x
@@ -173,17 +173,17 @@ class exports.TextBox extends Layer
 	updateBoxVisuals: (curEvent) ->
 		switch curEvent
 			when "mouseOver"
-				@textBoxContent.borderColor = if @focused then SystemThemeColor.accent else SystemThemeColor.chromeAltLow
+				@textBoxContent.borderColor = if @focused then SystemColor.accent else SystemColor.chromeAltLow
 			when "mouseDown"
 				@focused = true
 				@setFocus()
 			when "mouseOut"
-				@textBoxContent.borderColor = if @focused then SystemThemeColor.accent else SystemThemeColor.chromeDisabledLow
+				@textBoxContent.borderColor = if @focused then SystemColor.accent else SystemColor.chromeDisabledLow
 
 	updateCloseBtnVisuals: (curEvent) ->
 		switch curEvent
-			when "mouseOver" then @closeGlyph.color = SystemThemeColor.accent
-			when "mouseOut" then @closeGlyph.color = SystemThemeColor.chromeBlackMedium
+			when "mouseOver" then @closeGlyph.color = SystemColor.accent
+			when "mouseOut" then @closeGlyph.color = SystemColor.chromeBlackMedium
 
 	# ANIMATIONS
 	playPipeAnim: ->

@@ -1,13 +1,13 @@
 # TreeView requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 class exports.TreeView extends Layer
 	constructor: (@options={}) ->
 		@options.items ?= []
 		@options.width ?= 320
 		@options.height ?= 44
-		@options.backgroundColor ?= SystemThemeColor.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		super @options
 		@createLayers()
 
@@ -26,7 +26,7 @@ class exports.TreeView extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			width: @options.width
 			height: @options.height
 
@@ -43,7 +43,7 @@ class exports.TreeView extends Layer
 			parent: parent
 			name: "Item Container " + (level + 1) + "." + (index + 1)
 			childLayer: []
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 		itemContainer.totalHeight = itemContainer.height
 		item.layer = itemContainer
 		itemContainer.item = item
@@ -83,13 +83,13 @@ class exports.TreeView extends Layer
 		# EVENTS
 		itemContainer.onMouseOver ->
 			event.stopPropagation()
-			@.backgroundColor = SystemThemeColor.listLow
+			@.backgroundColor = SystemColor.listLow
 		itemContainer.onMouseDown ->
 			event.stopPropagation()
-			@.backgroundColor = SystemThemeColor.listMedium
+			@.backgroundColor = SystemColor.listMedium
 		itemContainer.onMouseUp ->
 			event.stopPropagation()
-			@.backgroundColor = SystemThemeColor.listLow
+			@.backgroundColor = SystemColor.listLow
 
 			# if item has children, expand/collapse
 			if childLayer
@@ -104,7 +104,7 @@ class exports.TreeView extends Layer
 
 		itemContainer.onMouseOut ->
 			event.stopPropagation()
-			@.backgroundColor = SystemThemeColor.transparent
+			@.backgroundColor = SystemColor.transparent
 
 		return itemContainer
 

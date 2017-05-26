@@ -1,6 +1,6 @@
 # ContextMenu requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 totalVerticalPadding = 16
 
@@ -8,7 +8,7 @@ class exports.ContextMenu extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= 136
 		@options.height ?= 32 + totalVerticalPadding
-		@options.backgroundColor ?= SystemThemeColor.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		@options.items ?= undefined
 		@options.disabledItems ?= undefined
 		super @options
@@ -37,8 +37,8 @@ class exports.ContextMenu extends Layer
 		@container = new Layer
 			name: "Container"
 			parent: @
-			backgroundColor: SystemThemeColor.chromeMediumLow
-			borderColor: SystemThemeColor.chromeHigh
+			backgroundColor: SystemColor.chromeMediumLow
+			borderColor: SystemColor.chromeHigh
 			borderWidth: 1
 			width: @options.width
 			height: @options.height
@@ -48,7 +48,7 @@ class exports.ContextMenu extends Layer
 			parent: @container
 			width: @options.width
 			height: @options.height - totalVerticalPadding
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 
 		@itemsContainer.centerY()
 
@@ -122,20 +122,20 @@ class exports.ContextMenu extends Layer
 
 	updateVisuals: (curEvent, itemBackground, itemText, itemEnabled) ->
 		if itemEnabled
-			labelColor = SystemThemeColor.baseHigh
+			labelColor = SystemColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					itemBackgroundColor = SystemThemeColor.listLow
+					itemBackgroundColor = SystemColor.listLow
 				when "mousedown"
-					itemBackgroundColor = SystemThemeColor.listMedium
+					itemBackgroundColor = SystemColor.listMedium
 				when "mouseover"
-					itemBackgroundColor = SystemThemeColor.listLow
+					itemBackgroundColor = SystemColor.listLow
 				else
-					itemBackgroundColor = SystemThemeColor.transparent
+					itemBackgroundColor = SystemColor.transparent
 		else
-			labelColor = SystemThemeColor.baseMediumLow
-			itemBackgroundColor = SystemThemeColor.transparent
+			labelColor = SystemColor.baseMediumLow
+			itemBackgroundColor = SystemColor.transparent
 
 		itemBackground.backgroundColor = itemBackgroundColor
 		itemText.color = labelColor

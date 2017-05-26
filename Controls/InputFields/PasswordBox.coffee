@@ -1,6 +1,6 @@
 # PasswordBox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 textBoxWidth = 296
 textBoxHeight = 60
@@ -10,14 +10,14 @@ class contentElem extends Type
 	constructor: (@options) ->
 		@options.x = 10
 		@options.y = 4
-		@options.color ?= SystemThemeColor.baseHigh
+		@options.color ?= SystemColor.baseHigh
 		super(@options)
 
 class exports.PasswordBox extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= textBoxWidth
 		@options.height ?= @setPasswordBoxHeight()
-		@options.backgroundColor ?= SystemThemeColor.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		@options.header ?= "Password"
 		@options.content ?= ""
 		@options.hint ?="Enter password"
@@ -73,7 +73,7 @@ class exports.PasswordBox extends Layer
 
 		@passwordBox = new Layer
 			parent: @
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			width: textBoxWidth
 			height: @setPasswordBoxHeight()
 
@@ -86,14 +86,14 @@ class exports.PasswordBox extends Layer
 			width: textBoxWidth
 			height: 32
 			y: @headerType.height + 8
-			backgroundColor: SystemThemeColor.altMediumLow
-			borderColor: SystemThemeColor.chromeDisabledLow
+			backgroundColor: SystemColor.altMediumLow
+			borderColor: SystemColor.chromeDisabledLow
 			borderWidth: wrapBorderWidth
 
 		@hintString = new contentElem
 			parent: @contentWrap
 			text: @options.hint
-			color: SystemThemeColor.baseMedium
+			color: SystemColor.baseMedium
 			visible: true
 
 		@contentString = new contentElem
@@ -110,7 +110,7 @@ class exports.PasswordBox extends Layer
 			parent: @contentWrap
 			x: @contentString.width + @contentString.x
 			y: 3
-			color: SystemThemeColor.baseHigh
+			color: SystemColor.baseHigh
 			text: "|"
 			visible: false
 
@@ -120,7 +120,7 @@ class exports.PasswordBox extends Layer
 			height: 28
 			y: @contentWrap.y + 2
 			x: @contentWrap.x + @contentWrap.width - (28 + wrapBorderWidth)
-			backgroundColor: SystemThemeColor.transparent
+			backgroundColor: SystemColor.transparent
 			visible: false
 
 		@previewGlyph = new Type
@@ -130,7 +130,7 @@ class exports.PasswordBox extends Layer
 			fontSize: 16
 			uwpStyle: "glyph"
 			text: "\uE052"
-			color: SystemThemeColor.chromeBlackMedium
+			color: SystemColor.chromeBlackMedium
 
 		@setFocus()
 		@updateBoxVisuals()
@@ -164,49 +164,49 @@ class exports.PasswordBox extends Layer
 			@hintString.visible = false
 			@contentGlyph.visible = true
 			@pipe.visible = true
-			@contentWrap.borderColor = SystemThemeColor.accent
+			@contentWrap.borderColor = SystemColor.accent
 		else
 			@pipe.visible = false
 			@previewButton.visible = false
-			@contentWrap.borderColor = SystemThemeColor.chromeDisabledLow
+			@contentWrap.borderColor = SystemColor.chromeDisabledLow
 
 		@pipe.x = @contentGlyph.width + @contentGlyph.x
 
 	updateBoxVisuals: (curEvent) ->
 		if @disabled
-			@headerType.color = SystemThemeColor.baseMediumLow
-			@contentWrap.backgroundColor = SystemThemeColor.baseLow
+			@headerType.color = SystemColor.baseMediumLow
+			@contentWrap.backgroundColor = SystemColor.baseLow
 			@contentWrap.borderWidth = 0
-			@hintString.color = SystemThemeColor.baseMediumLow
+			@hintString.color = SystemColor.baseMediumLow
 		else
-			@header.color = SystemThemeColor.baseHigh
-			@contentWrap.backgroundColor = SystemThemeColor.transparent
+			@header.color = SystemColor.baseHigh
+			@contentWrap.backgroundColor = SystemColor.transparent
 			@contentWrap.borderWidth = wrapBorderWidth
-			@hintString.color = SystemThemeColor.baseMedium
+			@hintString.color = SystemColor.baseMedium
 
 			switch curEvent
 				when "mouseOver"
-					@contentWrap.borderColor = if @focused then SystemThemeColor.accent else SystemThemeColor.chromeAltLow
+					@contentWrap.borderColor = if @focused then SystemColor.accent else SystemColor.chromeAltLow
 				when "mouseDown"
 					@focused = true
 					@setFocus()
 				when "mouseOut"
-					@contentWrap.borderColor = if @focused then SystemThemeColor.accent else SystemThemeColor.chromeDisabledLow
+					@contentWrap.borderColor = if @focused then SystemColor.accent else SystemColor.chromeDisabledLow
 
 	updateCloseBtnVisuals: (curEvent) ->
 		switch curEvent
-			when "mouseOver" then @previewGlyph.color = SystemThemeColor.accent
+			when "mouseOver" then @previewGlyph.color = SystemColor.accent
 			when "mouseDown"
-				@previewButton.backgroundColor = SystemThemeColor.accent
-				@previewGlyph.color = SystemThemeColor.altHigh
+				@previewButton.backgroundColor = SystemColor.accent
+				@previewGlyph.color = SystemColor.altHigh
 				@contentString.visible = true
 				@contentString.textOverflow = "clip"
 				@contentGlyph.visible = false
 				@pipe.x = @contentString.width + @contentString.x
-			when "mouseOut" then @previewGlyph.color = SystemThemeColor.chromeBlackMedium
+			when "mouseOut" then @previewGlyph.color = SystemColor.chromeBlackMedium
 			when "mouseUp"
-				@previewButton.backgroundColor = SystemThemeColor.transparent
-				@previewGlyph.color = SystemThemeColor.accent
+				@previewButton.backgroundColor = SystemColor.transparent
+				@previewGlyph.color = SystemColor.accent
 				@contentString.visible = false
 				@contentGlyph.visible = true
 				@contentGlyph.textOverflow = "clip"

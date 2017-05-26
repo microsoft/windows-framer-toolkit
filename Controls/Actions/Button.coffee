@@ -1,6 +1,6 @@
 # Button requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 
 class exports.Button extends Layer
 	constructor: (@options={}) ->
@@ -8,7 +8,7 @@ class exports.Button extends Layer
 		@options.enabled ?= true
 		@options.width ?= undefined
 		@options.height ?= 32
-		@options.backgroundColor ?= SystemThemeColor.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		super @options
 		@createLayers()
 
@@ -81,25 +81,25 @@ class exports.Button extends Layer
 
 	updateVisuals: (curEvent) ->
 		if @options.enabled
-			labelColor = SystemThemeColor.baseHigh
+			labelColor = SystemColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					buttonBackgroundColor = SystemThemeColor.baseLow
-					buttonBorderColor = SystemThemeColor.baseMediumLow
+					buttonBackgroundColor = SystemColor.baseLow
+					buttonBorderColor = SystemColor.baseMediumLow
 				when "mousedown"
-					buttonBackgroundColor = SystemThemeColor.baseMediumLow
-					buttonBorderColor = SystemThemeColor.transparent
+					buttonBackgroundColor = SystemColor.baseMediumLow
+					buttonBorderColor = SystemColor.transparent
 				when "mouseover"
-					buttonBackgroundColor = SystemThemeColor.baseLow
-					buttonBorderColor = SystemThemeColor.baseMediumLow
+					buttonBackgroundColor = SystemColor.baseLow
+					buttonBorderColor = SystemColor.baseMediumLow
 				else
-					buttonBackgroundColor = SystemThemeColor.baseLow
-					buttonBorderColor = SystemThemeColor.transparent
+					buttonBackgroundColor = SystemColor.baseLow
+					buttonBorderColor = SystemColor.transparent
 		else
-			labelColor = SystemThemeColor.baseMediumLow
-			buttonBackgroundColor = SystemThemeColor.baseLow
-			buttonBorderColor = SystemThemeColor.transparent
+			labelColor = SystemColor.baseMediumLow
+			buttonBackgroundColor = SystemColor.baseLow
+			buttonBorderColor = SystemColor.transparent
 			@labelText.off Events.TapStart
 
 		@labelText.color = labelColor

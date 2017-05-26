@@ -2,13 +2,13 @@
 document.body.style.cursor = "auto"
 
 {Type} = require "Type"
-{SystemThemeColor} = require "SystemThemeColor"
+{SystemColor} = require "SystemColor"
 m = require "motionCurves"
 a = require "acrylic"
 
-hoverColor = SystemThemeColor.listLow
-pressColor = SystemThemeColor.listMedium
-restColor = SystemThemeColor.transparent
+hoverColor = SystemColor.listLow
+pressColor = SystemColor.listMedium
+restColor = SystemColor.transparent
 
 contentMargin = 24
 
@@ -21,7 +21,7 @@ appWindow = new Layer
 	y: 100
 	width: 1024
 	height: 32
-	backgroundColor: SystemThemeColor.transparent
+	backgroundColor: SystemColor.transparent
 
 appWindow.centerX()
 appWindow.draggable.enabled = true
@@ -32,7 +32,7 @@ leftPane = new Layer
 	width: 320
 	height: 768
 	clip: true
-	backgroundColor: SystemThemeColor.transparent
+	backgroundColor: SystemColor.transparent
 
 leftPane.states =
 	collapsed:
@@ -45,14 +45,14 @@ leftPane.states =
 
 leftPane.stateSwitch("expanded")
 
-a.acrylic(SystemThemeColor.altHigh, 0.6, leftPane)
+a.acrylic(SystemColor.altHigh, 0.6, leftPane)
 
 mainPane = new Layer
 	parent: appWindow
 	x: leftPane.maxX
 	width: appWindow.width - leftPane.width
 	height: 768
-	backgroundColor: SystemThemeColor.altHigh
+	backgroundColor: SystemColor.altHigh
 
 mainPane.states =
 	collapsed:
@@ -71,7 +71,7 @@ titleBar = new Layer
 	parent: appWindow
 	width: appWindow.width
 	height: 32
-	backgroundColor: SystemThemeColor.transparent
+	backgroundColor: SystemColor.transparent
 
 backButton = new Type
 	parent: titleBar
@@ -222,7 +222,7 @@ footerItemData = [
 itemsContainer = new Layer
 	parent: leftPane
 	name: "Items Container"
-	backgroundColor: SystemThemeColor.transparent
+	backgroundColor: SystemColor.transparent
 	width: leftPane.width
 	height: navItemData.length * 40
 	y: hamburger.maxY
@@ -230,7 +230,7 @@ itemsContainer = new Layer
 footerItemsContainer = new Layer
 	parent: leftPane
 	name: "Footer Items Container"
-	backgroundColor: SystemThemeColor.transparent
+	backgroundColor: SystemColor.transparent
 	width: leftPane.width
 	height: footerItemData.length * 40
 	maxY: leftPane.maxY - 8
@@ -241,14 +241,14 @@ initNavItems = ->
 		name: "Nav Item " + i
 		width: leftPane.width
 		height: 40
-		backgroundColor: SystemThemeColor.tranparent
+		backgroundColor: SystemColor.tranparent
 		y: i * 40
 
 	selection = new Layer
 		parent: navItem
 		width: 6
 		height: 24
-		backgroundColor: SystemThemeColor.accent
+		backgroundColor: SystemColor.accent
 		y: 8
 		visible: false
 
@@ -301,7 +301,7 @@ initFooterItems = ->
 		parent: footerItemsContainer
 		width: leftPane.width
 		height: 40
-		backgroundColor: SystemThemeColor.transparent
+		backgroundColor: SystemColor.transparent
 		y: i * 40
 
 	footerItemIcon = new Type
