@@ -1,6 +1,6 @@
 # TimePicker requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 class exports.TimePicker extends Layer
 	constructor: (@options={}) ->
@@ -11,7 +11,7 @@ class exports.TimePicker extends Layer
 		@options.enabled ?= true
 		@options.width ?= 242
 		@options.height ?= 60
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		super @options
 		@createLayers()
 
@@ -65,7 +65,7 @@ class exports.TimePicker extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			width: @options.width
 			height: @options.height
 
@@ -84,8 +84,8 @@ class exports.TimePicker extends Layer
 			width: @options.width
 			height: 32
 			y: @headerText.maxY
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.baseMediumLow
+			backgroundColor: UWPColor.altMediumLow
+			borderColor: UWPColor.baseMediumLow
 			borderWidth: 2
 
 		@hourText = new Type
@@ -105,7 +105,7 @@ class exports.TimePicker extends Layer
 			height: @box.height - 4
 			width: 2
 			x: @hourText.maxX
-			backgroundColor: Color.baseLow
+			backgroundColor: UWPColor.baseLow
 
 		@minuteText = new Type
 			parent: @box
@@ -124,7 +124,7 @@ class exports.TimePicker extends Layer
 			height: @box.height - 4
 			width: 2
 			x: @minuteText.maxX
-			backgroundColor: Color.baseLow
+			backgroundColor: UWPColor.baseLow
 
 		@ampmText = new Type
 			parent: @box
@@ -154,8 +154,8 @@ class exports.TimePicker extends Layer
 			name: "Picker"
 			width: @box.width
 			height: (timePickerItems.length - 1) * 44 + 46
-			backgroundColor: Color.chromeMediumLow
-			borderColor: Color.chromeHigh
+			backgroundColor: UWPColor.chromeMediumLow
+			borderColor: UWPColor.chromeHigh
 			borderWidth: 1
 			visible: false
 			clip: true
@@ -170,7 +170,7 @@ class exports.TimePicker extends Layer
 			name: "Divider"
 			width: 2
 			height: (timePickerItems.length - 1) * 44
-			backgroundColor: Color.baseLow
+			backgroundColor: UWPColor.baseLow
 			x: 81
 
 		@divider2 = new Layer
@@ -178,7 +178,7 @@ class exports.TimePicker extends Layer
 			name: "Divider"
 			width: 2
 			height: (timePickerItems.length - 1) * 44
-			backgroundColor: Color.baseLow
+			backgroundColor: UWPColor.baseLow
 			x: 161
 
 		@items = new Layer
@@ -186,14 +186,14 @@ class exports.TimePicker extends Layer
 			name: "Items"
 			width: @picker.width
 			height: (timePickerItems.length - 1) * 44
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			clip: true
 
 		for i in [0..timePickerItems.length - 1]
 			itemContainer = new Layer
 				parent: @items
 				name: "Item Container"
-				backgroundColor: Color.transparent
+				backgroundColor: UWPColor.transparent
 				width: @picker.width
 				height: 44
 				y: (i * 44) - 22
@@ -235,19 +235,19 @@ class exports.TimePicker extends Layer
 					bottom: 12
 
 			if i is 0 or i is timePickerItems.length - 1
-				hourText.color = minuteText.color = ampmText.color = Color.baseMediumLow
+				hourText.color = minuteText.color = ampmText.color = UWPColor.baseMediumLow
 			else if i is 4
-				hourText.color = minuteText.color = ampmText.color = Color.baseHigh
-				itemContainer.backgroundColor = Color.listAccentLow
+				hourText.color = minuteText.color = ampmText.color = UWPColor.baseHigh
+				itemContainer.backgroundColor = UWPColor.listAccentLow
 			else
-				hourText.color = minuteText.color = ampmText.color = Color.baseMedium
+				hourText.color = minuteText.color = ampmText.color = UWPColor.baseMedium
 
 		@bottomDivider = new Layer
 			parent: @picker
 			name: "Bottom Divider"
 			width: @picker.width - 2
 			height: 2
-			backgroundColor: Color.baseLow
+			backgroundColor: UWPColor.baseLow
 			y: (timePickerItems.length - 1) * 44
 
 		@bottomButtons = new Layer
@@ -255,7 +255,7 @@ class exports.TimePicker extends Layer
 			name: "Bottom Buttons"
 			width: @picker.width - 2
 			height: 44
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			y: @bottomDivider.maxY
 
 		@acceptButton = new Type
@@ -303,28 +303,28 @@ class exports.TimePicker extends Layer
 
 	updateVisuals: (curEvent) ->
 		if @options.enabled
-			timeColor = Color.baseHigh
-			headerColor = Color.baseHigh
+			timeColor = UWPColor.baseHigh
+			headerColor = UWPColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					boxBorderColor = Color.baseMedium
-					boxBackgroundColor = Color.altMedium
+					boxBorderColor = UWPColor.baseMedium
+					boxBackgroundColor = UWPColor.altMedium
 					@picker.visible = @picker.visible is false ? true : false
 				when "mousedown"
-					boxBorderColor = Color.baseMediumLow
-					boxBackgroundColor = Color.baseLow
+					boxBorderColor = UWPColor.baseMediumLow
+					boxBackgroundColor = UWPColor.baseLow
 				when "mouseover"
-					boxBorderColor = Color.baseMedium
-					boxBackgroundColor = Color.altMedium
+					boxBorderColor = UWPColor.baseMedium
+					boxBackgroundColor = UWPColor.altMedium
 				else
-					boxBorderColor = Color.baseMediumLow
-					boxBackgroundColor = Color.altMediumLow
+					boxBorderColor = UWPColor.baseMediumLow
+					boxBackgroundColor = UWPColor.altMediumLow
 		else
-			headerColor = Color.baseMediumLow
-			timeColor = Color.baseMediumLow
-			boxBorderColor = Color.transparent
-			boxBackgroundColor = Color.baseLow
+			headerColor = UWPColor.baseMediumLow
+			timeColor = UWPColor.baseMediumLow
+			boxBorderColor = UWPColor.transparent
+			boxBackgroundColor = UWPColor.baseLow
 
 		@headerText.color = headerColor
 		@hourText.color = @minuteText.color = @ampmText.color = timeColor

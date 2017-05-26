@@ -378,26 +378,26 @@ leftPane = new Layer
 	parent: appWindow
 	width: 320
 	height: 768
-	backgroundColor: Color.transparent
-a.acrylic(Color.altHigh, 0.8, leftPane)
+	backgroundColor: UWPColor.transparent
+a.acrylic(UWPColor.altHigh, 0.8, leftPane)
 ```
 
 ## Style
 ### Color
 * Color allows the user to apply colors from [Windows System Colors](https://docs.microsoft.com/en-us/windows/uwp/style/color#color-theming).
-* Use the following syntax: Color.altHigh, Color.baseHigh, Color.accent, etc.
+* Use the following syntax: UWPColor.altHigh, UWPColor.baseHigh, UWPColor.accent, etc.
 * accentColor is set to the default Windows Blue: #0078D7.
 * Example:
 ```
 backgroundLayer = new Layer
-	backgroundColor: Color.accent
+	backgroundColor: UWPColor.accent
 ```
 
 ### Type
 * Type allows the user to create text using the styles from the [Windows Type Ramp](https://docs.microsoft.com/en-us/windows/uwp/style/typography#type-ramp).
 * Properties available:
 	* *text:* the text content for your layer, default: "Content"
-	* *color:* the color of the text, default: Color.baseHigh
+	* *color:* the color of the text, default: UWPColor.baseHigh
 	* *textAlign:* the alignment of the text, default: "left"
 	* *width:* this property can be used to constrain the width of the layer so that the text wraps, default: width of the text string
 	* *height:* this property can be used to constrain the height of the layer, default: line height of the text per the style applied
@@ -418,6 +418,6 @@ backgroundLayer = new Layer
 placeholderText = new Type
 	content: "Lorem ipsum"
 	style: "captionAlt"
-	color: Color.baseMedium
+	color: UWPColor.baseMedium
 	textAlign: "center"
 ```

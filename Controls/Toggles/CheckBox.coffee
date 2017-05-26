@@ -1,6 +1,6 @@
 # Checkbox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 class exports.CheckBox extends Layer
 	constructor: (@options={}) ->
@@ -57,7 +57,7 @@ class exports.CheckBox extends Layer
 			width: @boxSize
 			height: @boxSize
 			borderWidth: 2
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			y: 6
 
 		@check = new Layer
@@ -83,7 +83,7 @@ class exports.CheckBox extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			width: @options.width
 
 		@resizeContainer()
@@ -119,54 +119,54 @@ class exports.CheckBox extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.toggled
 			if @options.enabled
-				labelColor = Color.baseHigh
+				labelColor = UWPColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						boxBorderColor = Color.baseHigh
-						boxBackgroundColor = Color.accent
-						checkColor = Color.chromeWhite
+						boxBorderColor = UWPColor.baseHigh
+						boxBackgroundColor = UWPColor.accent
+						checkColor = UWPColor.chromeWhite
 					when "mousedown"
-						boxBorderColor = Color.transparent
-						boxBackgroundColor = Color.baseMedium
-						checkColor = Color.chromeWhite
+						boxBorderColor = UWPColor.transparent
+						boxBackgroundColor = UWPColor.baseMedium
+						checkColor = UWPColor.chromeWhite
 						@options.toggled = false
 					when "mouseover"
-						boxBorderColor = Color.baseHigh
-						boxBackgroundColor = Color.accent
-						checkColor = Color.chromeWhite
+						boxBorderColor = UWPColor.baseHigh
+						boxBackgroundColor = UWPColor.accent
+						checkColor = UWPColor.chromeWhite
 					else
-						boxBorderColor = Color.transparent
-						boxBackgroundColor = Color.accent
-						checkColor = Color.chromeWhite
+						boxBorderColor = UWPColor.transparent
+						boxBackgroundColor = UWPColor.accent
+						checkColor = UWPColor.chromeWhite
 			else
-				labelColor = Color.baseMediumLow
-				boxBorderColor = Color.baseMediumLow
-				boxBackgroundColor = Color.transparent
-				checkColor = Color.baseMediumLow
+				labelColor = UWPColor.baseMediumLow
+				boxBorderColor = UWPColor.baseMediumLow
+				boxBackgroundColor = UWPColor.transparent
+				checkColor = UWPColor.baseMediumLow
 				@container.off Events.TapStart
 		else
 			if @options.enabled
-				labelColor = Color.baseHigh
-				checkColor = Color.transparent
+				labelColor = UWPColor.baseHigh
+				checkColor = UWPColor.transparent
 
 				if curEvent == "mouseup"
-					boxBorderColor = Color.baseHigh
-					boxBackgroundColor = Color.transparent
+					boxBorderColor = UWPColor.baseHigh
+					boxBackgroundColor = UWPColor.transparent
 				else if curEvent == "mousedown"
-					boxBorderColor = Color.transparent
-					boxBackgroundColor = Color.baseMedium
+					boxBorderColor = UWPColor.transparent
+					boxBackgroundColor = UWPColor.baseMedium
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					boxBorderColor = Color.baseHigh
-					boxBackgroundColor = Color.transparent
+					boxBorderColor = UWPColor.baseHigh
+					boxBackgroundColor = UWPColor.transparent
 				else
-					boxBorderColor = Color.baseMediumHigh
-					boxBackgroundColor = Color.transparent
+					boxBorderColor = UWPColor.baseMediumHigh
+					boxBackgroundColor = UWPColor.transparent
 			else
-				labelColor = Color.baseMediumLow
-				boxBorderColor = Color.baseMediumLow
-				boxBackgroundColor = Color.transparent
+				labelColor = UWPColor.baseMediumLow
+				boxBorderColor = UWPColor.baseMediumLow
+				boxBackgroundColor = UWPColor.transparent
 				@container.off Events.TapStart
 
 		@labelText.color = labelColor

@@ -1,6 +1,6 @@
 # Dialog requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 {Button} = require "Button"
 
 topPadding = 18
@@ -33,7 +33,7 @@ class exports.Dialog extends Layer
 		@options.button3Text ?= undefined
 		@options.width ?= 320
 		@options.height ?= 184
-		@options.backgroundColor ?= Color.altHigh
+		@options.backgroundColor ?= UWPColor.altHigh
 		super @options
 		@createLayers()
 
@@ -98,8 +98,8 @@ class exports.Dialog extends Layer
 		@container = new Layer
 			parent: @
 			name: "Dialog Background"
-			backgroundColor: Color.altHigh
-			borderColor: Color.accent
+			backgroundColor: UWPColor.altHigh
+			borderColor: UWPColor.accent
 			borderWidth: 1
 			width: @contentText.width + leftRightPadding * 2
 			height: heightWithoutText + @titleText.height + @contentText.height

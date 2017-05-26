@@ -1,4 +1,4 @@
-exports.Color =
+exports.UWPColor =
 	accent: "rgba(0,120,215,1)"
 	transparent: "rgba(0,0,0,0)"
 

@@ -1,6 +1,6 @@
 # TextBox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 initalContentStringWidth = 0
 textBoxWidth = 296
@@ -10,7 +10,7 @@ class exports.TextBox extends Layer
 	constructor: (@options={}) ->
 		@options.width ?= textBoxWidth
 		@options.height ?= @setTextBoxHeight()
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		@options.header ?= "Control header"
 		@options.content ?= ""
 		@options.hint ?="Hint string"
@@ -57,7 +57,7 @@ class exports.TextBox extends Layer
 
 		@textBox = new Layer
 			parent: @
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			width: textBoxWidth
 			height: @setTextBoxHeight()
 
@@ -69,8 +69,8 @@ class exports.TextBox extends Layer
 			parent: @textBox
 			width: textBoxWidth
 			height: 32
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.chromeDisabledLow
+			backgroundColor: UWPColor.altMediumLow
+			borderColor: UWPColor.chromeDisabledLow
 			borderWidth: 2
 			y: @headerType.height + 8
 
@@ -78,14 +78,14 @@ class exports.TextBox extends Layer
 			parent: @textBoxContent
 			x: 10
 			y: 4
-			color: Color.baseMedium
+			color: UWPColor.baseMedium
 			text: @options.hint
 
 		@contentString = new Type
 			parent: @textBoxContent
 			x: 10
 			y: 4
-			color: Color.baseHigh
+			color: UWPColor.baseHigh
 			text: @options.content
 			textOverflow: "clip"
 			visible: false
@@ -95,7 +95,7 @@ class exports.TextBox extends Layer
 			parent: @textBoxContent
 			x: @contentString.width + @contentString.x
 			y: 3
-			color: Color.baseHigh
+			color: UWPColor.baseHigh
 			text: "|"
 			visible: false
 
@@ -104,7 +104,7 @@ class exports.TextBox extends Layer
 			width: 30
 			height: 30
 			x: Align.right
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			visible: false
 
 		@closeGlyph = new Type
@@ -114,7 +114,7 @@ class exports.TextBox extends Layer
 			fontSize: 12
 			uwpStyle: "glyph"
 			text: "\uE10A"
-			color: Color.chromeBlackMedium
+			color: UWPColor.chromeBlackMedium
 
 		@setFocus()
 		@setHintVisiblity()
@@ -158,14 +158,14 @@ class exports.TextBox extends Layer
 			stringMaxWidth = if @contentString.width >= focusedStringMaxWidth then focusedStringMaxWidth else @contentString.width
 			@hintString.visible = false
 			@pipe.visible = true
-			@textBoxContent.borderColor = Color.accent
+			@textBoxContent.borderColor = UWPColor.accent
 		else
 			@setHintVisiblity()
 
 			stringMaxWidth = if @contentString.width >= unfocusedStringMaxWidth then unfocusedStringMaxWidth else @contentString.width
 			@pipe.visible = false
 			@closeButton.visible = false
-			@textBoxContent.borderColor = Color.chromeDisabledLow
+			@textBoxContent.borderColor = UWPColor.chromeDisabledLow
 
 		@contentString.width = stringMaxWidth
 		@pipe.x = @contentString.width + @contentString.x
@@ -173,17 +173,17 @@ class exports.TextBox extends Layer
 	updateBoxVisuals: (curEvent) ->
 		switch curEvent
 			when "mouseOver"
-				@textBoxContent.borderColor = if @focused then Color.accent else Color.chromeAltLow
+				@textBoxContent.borderColor = if @focused then UWPColor.accent else UWPColor.chromeAltLow
 			when "mouseDown"
 				@focused = true
 				@setFocus()
 			when "mouseOut"
-				@textBoxContent.borderColor = if @focused then Color.accent else Color.chromeDisabledLow
+				@textBoxContent.borderColor = if @focused then UWPColor.accent else UWPColor.chromeDisabledLow
 
 	updateCloseBtnVisuals: (curEvent) ->
 		switch curEvent
-			when "mouseOver" then @closeGlyph.color = Color.accent
-			when "mouseOut" then @closeGlyph.color = Color.chromeBlackMedium
+			when "mouseOver" then @closeGlyph.color = UWPColor.accent
+			when "mouseOut" then @closeGlyph.color = UWPColor.chromeBlackMedium
 
 	# ANIMATIONS
 	playPipeAnim: ->

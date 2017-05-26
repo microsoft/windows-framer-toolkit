@@ -1,6 +1,6 @@
 # Button requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 class exports.Button extends Layer
 	constructor: (@options={}) ->
@@ -8,7 +8,7 @@ class exports.Button extends Layer
 		@options.enabled ?= true
 		@options.width ?= undefined
 		@options.height ?= 32
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		super @options
 		@createLayers()
 
@@ -81,25 +81,25 @@ class exports.Button extends Layer
 
 	updateVisuals: (curEvent) ->
 		if @options.enabled
-			labelColor = Color.baseHigh
+			labelColor = UWPColor.baseHigh
 
 			switch curEvent
 				when "mouseup"
-					buttonBackgroundColor = Color.baseLow
-					buttonBorderColor = Color.baseMediumLow
+					buttonBackgroundColor = UWPColor.baseLow
+					buttonBorderColor = UWPColor.baseMediumLow
 				when "mousedown"
-					buttonBackgroundColor = Color.baseMediumLow
-					buttonBorderColor = Color.transparent
+					buttonBackgroundColor = UWPColor.baseMediumLow
+					buttonBorderColor = UWPColor.transparent
 				when "mouseover"
-					buttonBackgroundColor = Color.baseLow
-					buttonBorderColor = Color.baseMediumLow
+					buttonBackgroundColor = UWPColor.baseLow
+					buttonBorderColor = UWPColor.baseMediumLow
 				else
-					buttonBackgroundColor = Color.baseLow
-					buttonBorderColor = Color.transparent
+					buttonBackgroundColor = UWPColor.baseLow
+					buttonBorderColor = UWPColor.transparent
 		else
-			labelColor = Color.baseMediumLow
-			buttonBackgroundColor = Color.baseLow
-			buttonBorderColor = Color.transparent
+			labelColor = UWPColor.baseMediumLow
+			buttonBackgroundColor = UWPColor.baseLow
+			buttonBorderColor = UWPColor.transparent
 			@labelText.off Events.TapStart
 
 		@labelText.color = labelColor

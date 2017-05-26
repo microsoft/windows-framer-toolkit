@@ -1,13 +1,13 @@
 # TreeView requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{UWPColor} = require "Color"
 
 class exports.TreeView extends Layer
 	constructor: (@options={}) ->
 		@options.items ?= []
 		@options.width ?= 320
 		@options.height ?= 44
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= UWPColor.transparent
 		super @options
 		@createLayers()
 
@@ -26,7 +26,7 @@ class exports.TreeView extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 			width: @options.width
 			height: @options.height
 
@@ -43,7 +43,7 @@ class exports.TreeView extends Layer
 			parent: parent
 			name: "Item Container " + (level + 1) + "." + (index + 1)
 			childLayer: []
-			backgroundColor: Color.transparent
+			backgroundColor: UWPColor.transparent
 		itemContainer.totalHeight = itemContainer.height
 		item.layer = itemContainer
 		itemContainer.item = item
@@ -83,13 +83,13 @@ class exports.TreeView extends Layer
 		# EVENTS
 		itemContainer.onMouseOver ->
 			event.stopPropagation()
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = UWPColor.listLow
 		itemContainer.onMouseDown ->
 			event.stopPropagation()
-			@.backgroundColor = Color.listMedium
+			@.backgroundColor = UWPColor.listMedium
 		itemContainer.onMouseUp ->
 			event.stopPropagation()
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = UWPColor.listLow
 
 			# if item has children, expand/collapse
 			if childLayer
@@ -104,7 +104,7 @@ class exports.TreeView extends Layer
 
 		itemContainer.onMouseOut ->
 			event.stopPropagation()
-			@.backgroundColor = Color.transparent
+			@.backgroundColor = UWPColor.transparent
 
 		return itemContainer
 
