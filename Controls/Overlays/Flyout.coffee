@@ -1,6 +1,6 @@
 # Flyout requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 
 topPadding = 11
 leftRightPadding = 12

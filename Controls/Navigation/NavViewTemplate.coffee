@@ -2,7 +2,7 @@
 document.body.style.cursor = "auto"
 
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 m = require "motionCurves"
 a = require "acrylic"
 

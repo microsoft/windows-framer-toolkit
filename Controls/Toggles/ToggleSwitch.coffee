@@ -1,7 +1,7 @@
 # ToggleSwitch requires these modules. Please include them in your /modules directory
 m = require "motionCurves"
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 
 class exports.ToggleSwitch extends Layer
 	constructor: (@options={}) ->

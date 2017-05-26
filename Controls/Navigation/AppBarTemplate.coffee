@@ -1,4 +1,4 @@
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 {Type} = require "Type"
 {ContextMenu} = require "ContextMenu"
 

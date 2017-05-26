@@ -1,5 +1,5 @@
 # Dependencies
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 {Type} = require "Type"
 {Slider} = require "Slider"
 

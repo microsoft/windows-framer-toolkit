@@ -1,6 +1,6 @@
 # MonthCalendar requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 
 class exports.CalendarDatePicker extends Layer
 	constructor: (@options={}) ->

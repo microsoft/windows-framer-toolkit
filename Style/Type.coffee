@@ -1,4 +1,4 @@
-{Color} = require "Color"
+{SystemThemeColor} = require "SystemThemeColor"
 
 class exports.Type extends TextLayer
 
