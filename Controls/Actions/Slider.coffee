@@ -1,6 +1,6 @@
 # Slider requires these modules. Please include them in your /modules directory
 {Type} = require 'Type'
-{Color} = require 'Color'
+{SystemColor} = require 'SystemColor'
 
 class exports.Slider extends Layer
 	constructor: (@options={}) ->
@@ -71,7 +71,7 @@ class exports.Slider extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			width: @options.width
 			height: @options.height
 
@@ -108,9 +108,9 @@ class exports.Slider extends Layer
 			text: Math.round(@sliderComp.value)
 			uwpStyle: "body"
 			textAlign: "center"
-			borderColor: Color.chromeHigh
+			borderColor: SystemColor.chromeHigh
 			borderWidth: 1
-			backgroundColor: Color.chromeMediumLow
+			backgroundColor: SystemColor.chromeMediumLow
 			y: -10
 			x: @sliderComp.knob.x - (@.width / 2) + 4
 			padding:
@@ -156,32 +156,32 @@ class exports.Slider extends Layer
 			@.parent.parent.parent.updateVisuals("dragend")
 
 	updateVisuals: (curEvent) ->
-		headerColor = Color.baseHigh
-		sliderBackgroundColor = Color.baseMediumLow
-		sliderFillColor = Color.accent
+		headerColor = SystemColor.baseHigh
+		sliderBackgroundColor = SystemColor.baseMediumLow
+		sliderFillColor = SystemColor.accent
 
 		if @options.enabled
 			switch curEvent
 				when "mouseup"
-					sliderKnobColor = Color.chromeAltLow
+					sliderKnobColor = SystemColor.chromeAltLow
 					toolTipVisible = false
 				when "mousedown"
-					sliderKnobColor = Color.chromeHigh
+					sliderKnobColor = SystemColor.chromeHigh
 					toolTipVisible = true
 				when "mouseover"
-					sliderKnobColor = Color.chromeAltLow
+					sliderKnobColor = SystemColor.chromeAltLow
 					toolTipVisible = false
 				when "drag"
-					sliderKnobColor = Color.chromeHigh
+					sliderKnobColor = SystemColor.chromeHigh
 					toolTipVisible = true
 				else
-					sliderKnobColor = Color.accent
+					sliderKnobColor = SystemColor.accent
 					toolTipVisible = false
 		else
-			headerColor = Color.baseMediumLow
-			sliderKnobColor = Color.chromeDisabledHigh
-			sliderFillColor = Color.transparent
-			sliderBackgroundColor = Color.baseLow
+			headerColor = SystemColor.baseMediumLow
+			sliderKnobColor = SystemColor.chromeDisabledHigh
+			sliderFillColor = SystemColor.transparent
+			sliderBackgroundColor = SystemColor.baseLow
 
 			@sliderComp.knob.draggable = false
 			@sliderComp.off Events.TapStart

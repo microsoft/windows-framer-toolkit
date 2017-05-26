@@ -23,7 +23,7 @@ exports.acrylic = (color, opacity, element) ->
 		y: 0
 		width: element.width
 		height: element.height
-		backgroundColor: Color.transparent
+		backgroundColor: SystemColor.transparent
 		index: 1
 		shadowX: 0
 		shadowY: 0
@@ -62,7 +62,7 @@ exports.acrylic = (color, opacity, element) ->
 		index: 4
 		width: element.width
 		height: element.height
-		backgroundColor: Color.transparent
+		backgroundColor: SystemColor.transparent
 
 	# Add noise via the module
 	n.noise(0.04, noisyBG)

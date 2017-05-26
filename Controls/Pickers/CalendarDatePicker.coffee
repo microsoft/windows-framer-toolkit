@@ -1,6 +1,6 @@
 # MonthCalendar requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemColor} = require "SystemColor"
 
 class exports.CalendarDatePicker extends Layer
 	constructor: (@options={}) ->
@@ -9,7 +9,7 @@ class exports.CalendarDatePicker extends Layer
 		@options.enabled ?= true
 		@options.width ?= 296
 		@options.height ?= 60
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		super @options
 		@createLayers()
 
@@ -44,7 +44,7 @@ class exports.CalendarDatePicker extends Layer
 		@container = new Layer
 			parent: @
 			name: "Container"
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			width: @options.width
 			height: @options.height
 
@@ -63,8 +63,8 @@ class exports.CalendarDatePicker extends Layer
 			width: @options.width
 			height: 32
 			y: @headerText.maxY
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.baseMediumLow
+			backgroundColor: SystemColor.altMediumLow
+			borderColor: SystemColor.baseMediumLow
 			borderWidth: 2
 
 		@dateText = new Type
@@ -94,8 +94,8 @@ class exports.CalendarDatePicker extends Layer
 			name: "Calendar"
 			width: 296
 			height: 334
-			backgroundColor: Color.altHigh
-			borderColor: Color.chromeMedium
+			backgroundColor: SystemColor.altHigh
+			borderColor: SystemColor.chromeMedium
 			borderWidth: 2
 			y: @box.maxY + 2
 			visible: false
@@ -118,7 +118,7 @@ class exports.CalendarDatePicker extends Layer
 			fontSize: 20
 			padding: 10
 			y: 2
-			color: Color.baseMediumHigh
+			color: SystemColor.baseMediumHigh
 		@downArrow.maxX = @calendar.maxX - 2
 
 		@upArrow = new Type
@@ -129,13 +129,13 @@ class exports.CalendarDatePicker extends Layer
 			fontSize: 20
 			padding: 10
 			y: 2
-			color: Color.baseMediumHigh
+			color: SystemColor.baseMediumHigh
 		@upArrow.maxX = @downArrow.x
 
 		days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 		daysContainer = new Layer
 			parent: @calendar
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: @monthText.maxY + 22
 			width: @calendar.width
 			height: 14
@@ -152,7 +152,7 @@ class exports.CalendarDatePicker extends Layer
 		@calendarGrid = new Layer
 			parent: @calendar
 			name: "Lines"
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			width: @calendar.width - 2
 			height: 254
 		@calendarGrid.y = 78
@@ -180,32 +180,32 @@ class exports.CalendarDatePicker extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.enabled
 			if @dateText.text == "mm/dd/yyyy"
-				dateColor = Color.baseMedium
+				dateColor = SystemColor.baseMedium
 			else
-				dateColor = Color.baseHigh
+				dateColor = SystemColor.baseHigh
 
-			headerColor = Color.baseHigh
-			glyphColor = Color.baseHigh
+			headerColor = SystemColor.baseHigh
+			glyphColor = SystemColor.baseHigh
 
 			if curEvent == "mouseup"
-				boxBorderColor = Color.baseMedium
-				boxBackgroundColor = Color.altMedium
+				boxBorderColor = SystemColor.baseMedium
+				boxBackgroundColor = SystemColor.altMedium
 				@calendar.visible = @calendar.visible is false ? true : false
 			else if curEvent == "mousedown"
-				boxBorderColor = Color.baseMediumLow
-				boxBackgroundColor = Color.baseLow
+				boxBorderColor = SystemColor.baseMediumLow
+				boxBackgroundColor = SystemColor.baseLow
 			else if curEvent == "mouseover"
-				boxBorderColor = Color.baseMedium
-				boxBackgroundColor = Color.altMedium
+				boxBorderColor = SystemColor.baseMedium
+				boxBackgroundColor = SystemColor.altMedium
 			else
-				boxBorderColor = Color.baseMediumLow
-				boxBackgroundColor = Color.altMediumLow
+				boxBorderColor = SystemColor.baseMediumLow
+				boxBackgroundColor = SystemColor.altMediumLow
 		else
-			headerColor = Color.baseMediumLow
-			dateColor = Color.baseMediumLow
-			glyphColor = Color.baseMediumLow
-			boxBorderColor = Color.transparent
-			boxBackgroundColor = Color.baseLow
+			headerColor = SystemColor.baseMediumLow
+			dateColor = SystemColor.baseMediumLow
+			glyphColor = SystemColor.baseMediumLow
+			boxBorderColor = SystemColor.transparent
+			boxBackgroundColor = SystemColor.baseLow
 
 		@headerText.color = headerColor
 		@dateText.color = dateColor
@@ -217,7 +217,7 @@ class exports.CalendarDatePicker extends Layer
 		dates1 = ["27", "28", "29", "30", "31", "1", "2"]
 		dates1Container = new Layer
 			parent: @calendarGrid
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 
 		for i in [0..dates1.length-1]
 			date = new Type
@@ -231,12 +231,12 @@ class exports.CalendarDatePicker extends Layer
 					bottom: 12
 
 			if i >= 0 and i <= 4
-				date.backgroundColor = Color.chromeLow
+				date.backgroundColor = SystemColor.chromeLow
 
 		dates2 = ["3", "4", "5", "6", "7", "8", "9"]
 		dates2Container = new Layer
 			parent: @calendarGrid
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: 42
 
 		for i in [0..dates2.length-1]
@@ -253,7 +253,7 @@ class exports.CalendarDatePicker extends Layer
 		dates3 = ["10", "11", "12", "13", "14", "15", "16"]
 		dates3Container = new Layer
 			parent: @calendarGrid
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: 42 * 2
 
 		for i in [0..dates3.length-1]
@@ -270,7 +270,7 @@ class exports.CalendarDatePicker extends Layer
 		dates4 = ["17", "18", "19", "20", "21", "22", "23"]
 		dates4Container = new Layer
 			parent: @calendarGrid
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: 42 * 3
 
 		for i in [0..dates4.length-1]
@@ -285,13 +285,13 @@ class exports.CalendarDatePicker extends Layer
 					bottom: 12
 
 			if i == 6
-				date.backgroundColor = Color.accent
-				date.color = Color.chromeWhite
+				date.backgroundColor = SystemColor.accent
+				date.color = SystemColor.chromeWhite
 
 		dates5 = ["24", "25", "26", "27", "28", "29", "30"]
 		dates5Container = new Layer
 			parent: @calendarGrid
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: 42 * 4
 
 		for i in [0..dates5.length-1]
@@ -308,7 +308,7 @@ class exports.CalendarDatePicker extends Layer
 		dates6 = ["1", "2", "3", "4", "5", "6", "7"]
 		dates6Container = new Layer
 			parent: @calendarGrid
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: 42 * 5
 
 		for i in [0..dates6.length-1]
@@ -318,7 +318,7 @@ class exports.CalendarDatePicker extends Layer
 				text: dates6[i]
 				x: 42 * i
 				textAlign: "center"
-				backgroundColor: Color.chromeLow
+				backgroundColor: SystemColor.chromeLow
 				padding:
 					top: 11
 					bottom: 12
@@ -330,7 +330,7 @@ class exports.CalendarDatePicker extends Layer
 				name: "Horizontal Line"
 				height: 2
 				width: @calendarGrid.width
-				backgroundColor: Color.chromeMedium
+				backgroundColor: SystemColor.chromeMedium
 				y: 42 * i
 
 		for i in [0..5]
@@ -339,5 +339,5 @@ class exports.CalendarDatePicker extends Layer
 				name: "Vertical Line"
 				width: 2
 				height: @calendarGrid.height
-				backgroundColor: Color.chromeMedium
+				backgroundColor: SystemColor.chromeMedium
 				x: 42 * i + 40

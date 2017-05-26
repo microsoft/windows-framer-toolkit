@@ -1,5 +1,5 @@
 # Dependencies
-{Color} = require "Color"
+{SystemColor} = require "SystemColor"
 {Type} = require "Type"
 {Slider} = require "Slider"
 
@@ -11,13 +11,13 @@ class MediaPlayerButton extends Type
 		@textAlign = "center"
 
 		@.onMouseOver ->
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = SystemColor.listLow
 		@.onMouseDown ->
-			@.backgroundColor = Color.listMedium
+			@.backgroundColor = SystemColor.listMedium
 		@.onMouseUp ->
-			@.backgroundColor = Color.listLow
+			@.backgroundColor = SystemColor.listLow
 		@.onMouseOut ->
-			@.backgroundColor = Color.transparent
+			@.backgroundColor = SystemColor.transparent
 
 # Ideally duration would be read by file
 getDuration = (duration) ->
@@ -46,7 +46,7 @@ getTime = (time, elapsed) ->
 		formatTime(remainingTime)	
 		
 container = new Layer
-	backgroundColor: Color.altMedium
+	backgroundColor: SystemColor.altMedium
 	width: Screen.width
 	height: 96
 	
@@ -81,7 +81,7 @@ leftButtons = new Layer
 	height: 48
 	width: leftBtnGlyphs.length * 48
 	maxY: container.maxY
-	backgroundColor: Color.transparent
+	backgroundColor: SystemColor.transparent
 
 for i in [0..leftBtnGlyphs.length - 1]
 	button = new MediaPlayerButton
@@ -96,7 +96,7 @@ middleButtons = new Layer
 	height: 48
 	width: middleBtnGlyphs.length * 48
 	maxY: container.maxY
-	backgroundColor: Color.transparent
+	backgroundColor: SystemColor.transparent
 	x: Align.center
 
 for i in [0..middleBtnGlyphs.length - 1]
@@ -113,7 +113,7 @@ rightButtons = new Layer
 	height: 48
 	width: rightBtnGlyphs.length * 48
 	maxY: container.maxY
-	backgroundColor: Color.transparent
+	backgroundColor: SystemColor.transparent
 	x: Align.right
 	
 for i in [0..rightBtnGlyphs.length - 1]

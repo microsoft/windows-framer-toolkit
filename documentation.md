@@ -54,7 +54,7 @@ If you hit any of the known bugs listed below for a specific control, please con
 [Acrylic](#acrylic)
 
 #### Style
-[Color](#color)
+[SystemColor](#SystemColor)
 
 [Type](#type)
 
@@ -121,12 +121,12 @@ volumeSlider = new Slider
 ### AppBar
 * [Detailed AppBar documentation](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/app-bars)
 * Due to its complexity, AppBar has been built as a template instead of a module. Copy the contents of AppBarTemplate.coffee into the app.coffee file for your project to get started.
-* Make sure to include the modules for Type, Color, and ContextMenu in your modules folder.
+* Make sure to include the modules for Type, SystemColor, and ContextMenu in your modules folder.
 
 ### NavigationView
 * Detailed NavigationView documentation coming soon
 * Due to its complexity, NavigationView has been built as a template instead of a module. Copy the contents of NavViewTemplate.coffee into the app.coffee file for your project to get started.
-* Make sure to include the modules for Type, Color, motion, and acrylic in your modules folder.
+* Make sure to include the modules for Type, SystemColor, motion, and acrylic in your modules folder.
 * To see the acrylic material, make sure to add an image to the bg layer.
 
 ### TreeView
@@ -329,7 +329,7 @@ frontDoorLock = new ToggleSwitch
 ### MediaPlayer
 * [Detailed MediaPlayer documentation](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/media-playback)
 * Due to its complexity, MediaPlayer has been built as a template instead of a module. Copy the contents of MediaPlayerTemplate.coffee into the app.coffee file for your project to get started.
-* Make sure to include the modules for Type, Color and Slider in your modules folder.
+* Make sure to include the modules for Type, SystemColor and Slider in your modules folder.
 
 ## Motion
 ### Motion Curves
@@ -378,26 +378,26 @@ leftPane = new Layer
 	parent: appWindow
 	width: 320
 	height: 768
-	backgroundColor: Color.transparent
-a.acrylic(Color.altHigh, 0.8, leftPane)
+	backgroundColor: SystemColor.transparent
+a.acrylic(SystemColor.altHigh, 0.8, leftPane)
 ```
 
 ## Style
-### Color
-* Color allows the user to apply colors from [Windows System Colors](https://docs.microsoft.com/en-us/windows/uwp/style/color#color-theming).
-* Use the following syntax: Color.altHigh, Color.baseHigh, Color.accent, etc.
+### SystemColor
+* SystemColor allows the user to apply colors from [Windows System Colors](https://docs.microsoft.com/en-us/windows/uwp/style/color#color-theming).
+* Use the following syntax: SystemColor.altHigh, SystemColor.baseHigh, SystemColor.accent, etc.
 * accentColor is set to the default Windows Blue: #0078D7.
 * Example:
 ```
 backgroundLayer = new Layer
-	backgroundColor: Color.accent
+	backgroundColor: SystemColor.accent
 ```
 
 ### Type
 * Type allows the user to create text using the styles from the [Windows Type Ramp](https://docs.microsoft.com/en-us/windows/uwp/style/typography#type-ramp).
 * Properties available:
 	* *text:* the text content for your layer, default: "Content"
-	* *color:* the color of the text, default: Color.baseHigh
+	* *color:* the color of the text, default: SystemColor.baseHigh
 	* *textAlign:* the alignment of the text, default: "left"
 	* *width:* this property can be used to constrain the width of the layer so that the text wraps, default: width of the text string
 	* *height:* this property can be used to constrain the height of the layer, default: line height of the text per the style applied
@@ -418,6 +418,6 @@ backgroundLayer = new Layer
 placeholderText = new Type
 	content: "Lorem ipsum"
 	style: "captionAlt"
-	color: Color.baseMedium
+	color: SystemColor.baseMedium
 	textAlign: "center"
 ```

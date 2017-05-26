@@ -1,6 +1,6 @@
 # RadioButton requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemColor} = require "SystemColor"
 
 class exports.RadioButton extends Layer
 	constructor: (@options={}) ->
@@ -58,7 +58,7 @@ class exports.RadioButton extends Layer
 			height: @outerCircleSize
 			borderRadius: 10
 			borderWidth: 2
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			y: 6
 
 		@innerCircle = new Layer
@@ -82,7 +82,7 @@ class exports.RadioButton extends Layer
 			parent: @
 			name: "Container"
 			width: @options.width
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 
 		@resizeContainer()
 		@outerCircle.parent = @container
@@ -117,48 +117,48 @@ class exports.RadioButton extends Layer
 	updateVisuals: (curEvent) ->
 		if @options.toggled
 			if @options.enabled
-				labelColor = Color.baseHigh
+				labelColor = SystemColor.baseHigh
 
 				switch curEvent
 					when "mouseup"
-						outerCircleBorderColor = Color.accent
-						innerCircleBackgroundColor = Color.baseHigh
+						outerCircleBorderColor = SystemColor.accent
+						innerCircleBackgroundColor = SystemColor.baseHigh
 					when "mousedown"
-						outerCircleBorderColor = Color.baseMedium
-						innerCircleBackgroundColor = Color.baseMedium
+						outerCircleBorderColor = SystemColor.baseMedium
+						innerCircleBackgroundColor = SystemColor.baseMedium
 						@options.toggled = false
 					when "mouseover"
-						outerCircleBorderColor = Color.accent
-						innerCircleBackgroundColor = Color.baseHigh
+						outerCircleBorderColor = SystemColor.accent
+						innerCircleBackgroundColor = SystemColor.baseHigh
 					else
-						outerCircleBorderColor = Color.accent
-						innerCircleBackgroundColor = Color.baseMediumHigh
+						outerCircleBorderColor = SystemColor.accent
+						innerCircleBackgroundColor = SystemColor.baseMediumHigh
 			else
-				labelColor = Color.baseMediumLow
-				outerCircleBorderColor = Color.baseMediumLow
-				innerCircleBackgroundColor = Color.baseMediumLow
+				labelColor = SystemColor.baseMediumLow
+				outerCircleBorderColor = SystemColor.baseMediumLow
+				innerCircleBackgroundColor = SystemColor.baseMediumLow
 				@container.off Events.TapStart
 		else
 			if @options.enabled
-				labelColor = Color.baseHigh
+				labelColor = SystemColor.baseHigh
 
 				if curEvent == "mouseup"
-					outerCircleBorderColor = Color.baseHigh
-					innerCircleBackgroundColor = Color.transparent
+					outerCircleBorderColor = SystemColor.baseHigh
+					innerCircleBackgroundColor = SystemColor.transparent
 				else if curEvent == "mousedown"
-					outerCircleBorderColor = Color.baseMedium
-					innerCircleBackgroundColor = Color.baseMedium
+					outerCircleBorderColor = SystemColor.baseMedium
+					innerCircleBackgroundColor = SystemColor.baseMedium
 					@options.toggled = true
 				else if curEvent == "mouseover"
-					outerCircleBorderColor = Color.baseHigh
-					innerCircleBackgroundColor = Color.transparent
+					outerCircleBorderColor = SystemColor.baseHigh
+					innerCircleBackgroundColor = SystemColor.transparent
 				else
-					outerCircleBorderColor = Color.baseMediumHigh
-					innerCircleBackgroundColor = Color.transparent
+					outerCircleBorderColor = SystemColor.baseMediumHigh
+					innerCircleBackgroundColor = SystemColor.transparent
 			else
-				labelColor = Color.baseMediumLow
-				outerCircleBorderColor = Color.baseMediumLow
-				innerCircleBackgroundColor = Color.transparent
+				labelColor = SystemColor.baseMediumLow
+				outerCircleBorderColor = SystemColor.baseMediumLow
+				innerCircleBackgroundColor = SystemColor.transparent
 				@container.off Events.TapStart
 
 		@labelText.color = labelColor

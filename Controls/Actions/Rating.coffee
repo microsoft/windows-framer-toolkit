@@ -1,6 +1,6 @@
 # Rating requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemColor} = require "SystemColor"
 m = require "motionCurves"
 
 class exports.Rating extends Layer
@@ -52,8 +52,8 @@ class exports.Rating extends Layer
 		starWidth = dpr(120 / 5)
 		starHeight = dpr 32
 
-		starEmptyColor = Color.baseLow
-		starFillColor = Color.accent
+		starEmptyColor = SystemColor.baseLow
+		starFillColor = SystemColor.accent
 
 		selectedStarIndex = undefined
 
@@ -62,7 +62,7 @@ class exports.Rating extends Layer
 			name: "Container"
 			width: dpr 120
 			height: dpr 32
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 
 		for i in [0..4]
 			hitTarget = new Layer
@@ -71,7 +71,7 @@ class exports.Rating extends Layer
 				width: starWidth
 				height: starHeight
 				x: i * starWidth
-				backgroundColor: Color.transparent
+				backgroundColor: SystemColor.transparent
 
 			star = new Type
 				name: "Star " + (i + 1)
@@ -90,7 +90,7 @@ class exports.Rating extends Layer
 				if @options.enabled
 					star.color = starFillColor
 				else
-					star.color = Color.baseMediumLow
+					star.color = SystemColor.baseMediumLow
 				selectedStarIndex = @options.starsFilled
 
 		# fix z order
@@ -174,7 +174,7 @@ class exports.Rating extends Layer
 						currentStar = sender.children[i].children[0]
 
 						if i <= starIndex
-							color = if isOff then Color.baseMedium else starFillColor
+							color = if isOff then SystemColor.baseMedium else starFillColor
 							@.parent.animateStar(currentStar, color)
 						else
 							@.parent.animateStar(currentStar, starEmptyColor)

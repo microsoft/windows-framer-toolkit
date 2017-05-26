@@ -1,6 +1,6 @@
 # HyperlinkButton requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemColor} = require "SystemColor"
 
 class exports.HyperlinkButton extends Layer
 	constructor: (@options={}) ->
@@ -8,7 +8,7 @@ class exports.HyperlinkButton extends Layer
 		@options.enabled ?= true
 		@options.width ?= 120
 		@options.height ?= 32
-		@options.backgroundColor ?= Color.transparent
+		@options.backgroundColor ?= SystemColor.transparent
 		super @options
 		@createLayers()
 
@@ -61,14 +61,14 @@ class exports.HyperlinkButton extends Layer
 		if @options.enabled
 			switch curEvent
 				when "mouseup"
-					labelColor = Color.baseMedium
+					labelColor = SystemColor.baseMedium
 				when "mousedown"
-					labelColor = Color.baseMediumLow
+					labelColor = SystemColor.baseMediumLow
 				when "mouseover"
-					labelColor = Color.baseMedium
+					labelColor = SystemColor.baseMedium
 				else
-					labelColor = Color.accent
+					labelColor = SystemColor.accent
 		else
-			labelColor = Color.baseMediumLow
+			labelColor = SystemColor.baseMediumLow
 
 		@labelText.color = labelColor
