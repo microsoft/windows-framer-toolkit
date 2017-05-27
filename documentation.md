@@ -15,7 +15,7 @@ If you hit any of the known bugs listed below for a specific control, please con
 [Slider](#slider)
 
 #### MediaPlayer
-[MediaPlayer](#MediaPlayer)
+[MediaPlayer](#mediaplayer-1)
 
 #### Navigation
 [AppBar](#appbar)
