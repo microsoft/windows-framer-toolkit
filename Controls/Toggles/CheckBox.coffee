@@ -68,7 +68,7 @@ class exports.CheckBox extends Layer
 			width: 20
 			height: 20
 			backgroundColor: ""
-		@check.center()
+		@check.centerY(+2)
 
 		@labelText = new Type
 			name: "Label"
