@@ -67,7 +67,9 @@ class exports.RadioButton extends Layer
 			width: 10
 			height: 10
 			borderRadius: 5
-		@innerCircle.center()
+		@innerCircle.centerX(+2)
+		@innerCircle.centerY(+2)
+			
 
 		@labelText = new Type
 			name: "Label"

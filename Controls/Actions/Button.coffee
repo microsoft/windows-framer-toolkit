@@ -48,9 +48,9 @@ class exports.Button extends Layer
 			borderWidth: 2
 			padding:
 				left: 10
-				top: 4
+				top: 5
 				right: 10
-				bottom: 5
+				bottom: 3
 
 		@resizeContainer()
 		@updateVisuals()

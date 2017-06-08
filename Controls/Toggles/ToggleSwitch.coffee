@@ -89,7 +89,7 @@ class exports.ToggleSwitch extends Layer
 			width: 10
 			height: 10
 			borderRadius: 5
-		@thumb.centerY()
+		@thumb.centerY(+2)
 
 		@onOffText = new Type
 			name: "On/Off Text"
