@@ -416,8 +416,8 @@ backgroundLayer = new Layer
 * Example:
 ```
 placeholderText = new Type
-	content: "Lorem ipsum"
-	style: "captionAlt"
+	text: "Lorem ipsum"
+	uwpStyle: "captionAlt"
 	color: SystemColor.baseMedium
 	textAlign: "center"
 ```
