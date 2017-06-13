@@ -1,3 +1,4 @@
+{SystemColor} = require "SystemColor"
 n = require "noise"
 
 exports.acrylic = (color, opacity, element) ->
