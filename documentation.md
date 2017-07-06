@@ -226,7 +226,7 @@ setDate = new DatePicker
 
 ### CalendarDatePicker
 * [Detailed CalendarDatePicker documentation](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/calendar-date-picker)
-Make sure to include the modules for Type, and Color in your modules folder.
+* Make sure to include the modules for Type, and Color in your modules folder.
 * Properties available:
 	* *header:* text that appears above the control, default: "Control header"
 	* *date:* the selected date in collapsed mode, default: "mm/dd/yyyy"
