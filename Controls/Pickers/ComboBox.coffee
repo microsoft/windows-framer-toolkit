@@ -1,6 +1,6 @@
 # ComboBox requires these modules. Please include them in your /modules directory
 {Type} = require "Type"
-{Color} = require "Color"
+{SystemColor} = require "SystemColor"
 
 comboBoxWidth = 296
 itemHeight = 32
@@ -46,11 +46,11 @@ class suggestItem extends Layer
 	setBackgroundColor: (state) ->
 		switch state
 			when "rest"
-				if @selected then Color.listAccentLow else Color.transparent
+				if @selected then SystemColor.listAccentLow else SystemColor.transparent
 			when "over"
-				if @selected then Color.listAccentMedium else Color.listLow
+				if @selected then SystemColor.listAccentMedium else SystemColor.listLow
 			when "down"
-				if @selected then Color.listAccentHigh else Color.listMedium
+				if @selected then SystemColor.listAccentHigh else SystemColor.listMedium
 
 class exports.ComboBox extends Layer
 	# A default list to get our customers going
@@ -76,7 +76,7 @@ class exports.ComboBox extends Layer
 		super _.defaults options,
 			width: comboBoxWidth
 			height: @setRootHeight()
-			backgroundColor: Color.transparent
+			backgroundColor: SystemColor.transparent
 			header: "Control Header"
 			_itemList: defaultItemList
 		@createLayers()
@@ -95,8 +95,8 @@ class exports.ComboBox extends Layer
 			name: "content wrapper"
 			width: comboBoxWidth
 			height: 32
-			backgroundColor: Color.altMediumLow
-			borderColor: Color.baseMediumLow
+			backgroundColor: SystemColor.altMediumLow
+			borderColor: SystemColor.baseMediumLow
 			borderColor: "red"
 			borderWidth: 2
 			y: @headerText.height + 8
@@ -107,7 +107,7 @@ class exports.ComboBox extends Layer
 			x: 10
 			y: 4
 			width: comboBoxWidth - 44
-			color: Color.baseHigh
+			color: SystemColor.baseHigh
 			textOverflow: "clip"
 
 		@chevron = new Type
@@ -118,7 +118,7 @@ class exports.ComboBox extends Layer
 			uwpStyle: "glyph"
 			text: "\uE0E5"
 			fontSize: 12
-			color: Color.baseMediumLow
+			color: SystemColor.baseMediumLow
 
 		@itemWrapScroll = new ScrollComponent
 			parent: @
@@ -127,8 +127,8 @@ class exports.ComboBox extends Layer
 			width: comboBoxWidth
 			visible: false
 			opacity: 0.0
-			backgroundColor: Color.chromeMedium
-			borderColor: Color.chromeHigh
+			backgroundColor: SystemColor.chromeMedium
+			borderColor: SystemColor.chromeHigh
 			borderWidth: 1
 			scrollHorizontal: false
 
@@ -160,7 +160,7 @@ class exports.ComboBox extends Layer
 				for l in layers.itemWrapScroll.content.children
 					[0...layers.itemWrapScroll.content.children.length]
 					l.selected = false
-					l.backgroundColor = Color.transparent
+					l.backgroundColor = SystemColor.transparent
 
 				this.selected = true
 				layers.itemWrapScroll.animate("listHidden")
@@ -202,25 +202,25 @@ class exports.ComboBox extends Layer
 	updateBoxVisuals: (curEvent) ->
 		switch curEvent
 			when "over"
-				comboBoxBackgroundColor = Color.altMedium
-				comboBoxBorderColor = Color.baseMediumHigh
-				chevronColor = Color.baseMediumHigh
+				comboBoxBackgroundColor = SystemColor.altMedium
+				comboBoxBorderColor = SystemColor.baseMediumHigh
+				chevronColor = SystemColor.baseMediumHigh
 			when "down"
-				comboBoxBackgroundColor = Color.listMedium
-				comboBoxBorderColor = Color.baseMediumLow
+				comboBoxBackgroundColor = SystemColor.listMedium
+				comboBoxBorderColor = SystemColor.baseMediumLow
 			when "up"
-				comboBoxBackgroundColor = Color.altMediumLow
+				comboBoxBackgroundColor = SystemColor.altMediumLow
 			when "out"
-				comboBoxBackgroundColor = Color.transparent
-				comboBoxBorderColor = Color.baseMediumLow
+				comboBoxBackgroundColor = SystemColor.transparent
+				comboBoxBorderColor = SystemColor.baseMediumLow
 			when "disabled"
-				headerTextColor = Color.baseMediumLow
-				comboBoxBackgroundColor = Color.baseLow
-				comboBoxBorderColor = Color.baseLow
-				chevronColor = Color.baseMediumLow
+				headerTextColor = SystemColor.baseMediumLow
+				comboBoxBackgroundColor = SystemColor.baseLow
+				comboBoxBorderColor = SystemColor.baseLow
+				chevronColor = SystemColor.baseMediumLow
 			else
-				comboBoxBorderColor = Color.baseMediumLow
-				comboBoxBackgroundColor = Color.transparent
+				comboBoxBorderColor = SystemColor.baseMediumLow
+				comboBoxBackgroundColor = SystemColor.transparent
 
 		@contentWrap.backgroundColor = comboBoxBackgroundColor
 		@contentWrap.borderColor = comboBoxBorderColor
