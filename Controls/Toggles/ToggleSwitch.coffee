@@ -4,65 +4,50 @@ m = require "motionCurves"
 {SystemColor} = require "SystemColor"
 
 class exports.ToggleSwitch extends Layer
-	constructor: (@options={}) ->
-		@options.header ?= "Control header"
-		@options.onText ?= "On"
-		@options.offText ?= "Off"
-		@options.width ?= undefined
-		@options.height ?= 56
-		@options.backgroundColor ?= SystemColor.transparent
-		@options.enabled ?= true
-		@options.toggled ?= false
-		super @options
-		@createLayers()
-
+	_header: "Control header"
 	@define 'header',
 		get: ->
-			@options.header
+			return @_header
 		set: (value) ->
-			@options.header = value
-			if @container?
-				@createLayers()
+			@_header = value
 
+	_onText: "On"
 	@define 'onText',
 		get: ->
-			@options.onText
+			return @_onText
 		set: (value) ->
-			@options.onText = value
-			if @container?
-				@createLayers()
+			@_onText = value
 
+	_offText: "Off"
 	@define 'offText',
 		get: ->
-			@options.offText
+			return @_offText
 		set: (value) ->
-			@options.offText = value
-			if @container?
-				@createLayers()
+			@_offText = value
 
+	_enabled: true
 	@define 'enabled',
 		get: ->
-			@options.enabled
+			return @_enabled
 		set: (value) ->
-			@options.enabled = value
-			if @container?
-				@createLayers()
+			@_enabled = value
 
+	_toggled: false
 	@define 'toggled',
 		get: ->
-			@options.toggled
+			return @_toggled
 		set: (value) ->
-			@options.toggled = value
-			if @container?
-				@createLayers()
+			@_toggled = value
+			
+	constructor: (options) ->
+		super _.defaults options,
+			width: undefined
+			height: 56
+			backgroundColor: SystemColor.transparent
+
+		@createLayers()
 
 	createLayers: ->
-		if @headerText?
-			@headerText.destroy()
-
-		if @container?
-			@container.destroy()
-
 		@toggleTime = .1
 		@toggleCurve = m.curve("Exponential")
 		@txtOffset = 12
@@ -70,7 +55,7 @@ class exports.ToggleSwitch extends Layer
 		@headerText = new Type
 			parent: @
 			name: "Header"
-			text: @options.header
+			text: @_header
 			whiteSpace: "nowrap"
 			padding:
 				bottom: 6
@@ -89,21 +74,21 @@ class exports.ToggleSwitch extends Layer
 			width: 10
 			height: 10
 			borderRadius: 5
-		@thumb.centerY(+2)
+		@thumb.centerY(+0)
 
 		@onOffText = new Type
 			name: "On/Off Text"
 			x: @toggle.maxX + @txtOffset
 			y: @toggle.y
 			height: @toggle.height
-			text: @offText
+			text: @_offText
 			whiteSpace: "nowrap"
 
 		@container = new Layer
 			parent: @
 			name: "Container"
 			height: 32
-			width: @options.width
+			width: @width
 			y: @headerText.maxY
 			backgroundColor: SystemColor.transparent
 
@@ -114,38 +99,38 @@ class exports.ToggleSwitch extends Layer
 		@updateVisuals()
 
 		# EVENTS
-		@container.onMouseUp ->
-			@.parent.updateVisuals("mouseup")
+		@container.onMouseUp =>
+			@updateVisuals("mouseup")
 
-		@container.onMouseDown ->
-			@.parent.updateVisuals("mousedown")
+		@container.onMouseDown =>
+			@updateVisuals("mousedown")
 
-		@container.onMouseOver ->
-			@.parent.updateVisuals("mouseover")
+		@container.onMouseOver =>
+			@updateVisuals("mouseover")
 
-		@container.onMouseOut ->
-			@.parent.updateVisuals("mouseout")
+		@container.onMouseOut =>
+			@updateVisuals("mouseout")
 
 	resizeContainer: ->
 		if @headerText.width > (@toggle.width + @txtOffset + @onOffText.width)
-			@options.width = @headerText.width
+			@width = @headerText.width
 			@container.width = @toggle.width + @txtOffset + @onOffText.width
 		else
-			@options.width = @container.width = @toggle.width + @txtOffset + @onOffText.width
+			@width = @container.width = @toggle.width + @txtOffset + @onOffText.width
 
-		@options.height = @headerText.height + @container.height
+		@height = @headerText.height + @container.height
 
-	thumbPosition = 3
+	thumbPosition = Align.left(3)
 	thumbBackgroundColor = SystemColor.baseMediumHigh
 	toggleBackgroundColor = SystemColor.transparent
 	toggleBorderColor = SystemColor.baseMediumHigh
 
 	updateVisuals: (curEvent) ->
-		if @options.toggled
-			thumbPosition = 27
-			@onOffText.text = @options.onText
+		if @_toggled
+			thumbPosition = Align.right(-2)
+			@onOffText.text = @_onText
 
-			if @options.enabled
+			if @_enabled
 				headerColor = SystemColor.baseHigh
 				onOffTextColor = SystemColor.baseHigh
 
@@ -158,7 +143,7 @@ class exports.ToggleSwitch extends Layer
 						thumbBackgroundColor = SystemColor.chromeWhite
 						toggleBackgroundColor = SystemColor.baseMedium
 						toggleBorderColor = SystemColor.transparent
-						@options.toggled = false
+						@_toggled = false
 					when "mouseover"
 						thumbBackgroundColor = SystemColor.chromeWhite
 						toggleBackgroundColor = SystemColor.listAccentHigh
@@ -174,10 +159,10 @@ class exports.ToggleSwitch extends Layer
 				headerColor = SystemColor.baseMediumLow
 				onOffTextColor = SystemColor.baseMediumLow
 		else
-			thumbPosition = 3
-			@onOffText.text = @offText
+			thumbPosition = Align.left(3)
+			@onOffText.text = @_offText
 
-			if @options.enabled
+			if @_enabled
 				headerColor = SystemColor.baseHigh
 				onOffTextColor = SystemColor.baseHigh
 
@@ -189,7 +174,7 @@ class exports.ToggleSwitch extends Layer
 					thumbBackgroundColor = SystemColor.chromeWhite
 					toggleBackgroundColor = SystemColor.baseMedium
 					toggleBorderColor = SystemColor.transparent
-					@options.toggled = true
+					@_toggled = true
 				else if curEvent == "mouseover"
 					thumbBackgroundColor = SystemColor.baseHigh
 					toggleBackgroundColor = SystemColor.transparent
