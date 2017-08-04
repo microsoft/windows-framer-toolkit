@@ -7,66 +7,51 @@ textBoxWidth = 296
 textBoxHeight = 60
 
 class exports.TextBox extends Layer
-	constructor: (@options={}) ->
-		@options.width ?= textBoxWidth
-		@options.height ?= @setTextBoxHeight()
-		@options.backgroundColor ?= SystemColor.transparent
-		@options.header ?= "Control header"
-		@options.content ?= ""
-		@options.hint ?="Hint string"
-		@options.focused ?= false
-		super @options
-		@createLayers()
-
+	_header = "My header"
 	@define "header",
 		get: ->
-			@options.header
+			return @_header
 		set: (value) ->
-			@options.header = value
-			if @textBox?
-				@createLayers()
+			@_header = value
 
+	_content = null
 	@define "content",
 		get: ->
-			@options.content
+			return @_content
 		set: (value) ->
-			@options.content = value
-			if @textBox?
-				@createLayers()
+			@_content = value
 
+	_hint = null
 	@define "hint",
 		get: ->
-			@options.hint
+			return @_hint
 		set: (value) ->
-			@options.hint = value
-			if @textBox?
-				@createLayers()
+			@_hint = value
 
+	_focused = true
 	@define "focused",
 		get: ->
-			@options.focused
+			return @_focused
 		set: (value) ->
-			@options.focused = value
-			if @textBox?
-				@createLayers()
+			@_focused = value
+
+	constructor: (options) ->
+		super _.defaults options,
+			width: textBoxWidth
+			height: @setTextBoxHeight()
+			backgroundColor: SystemColor.transparent
+
+		@createLayers()
+
 
 	# TEXTBOX LAYERS
 	createLayers: ->
-		if @textBox?
-			@textBox.destroy()
-
-		@textBox = new Layer
-			parent: @
-			backgroundColor: SystemColor.transparent
-			width: textBoxWidth
-			height: @setTextBoxHeight()
-
 		@headerType = new Type
-			parent: @textBox
-			text: @options.header
+			parent: @
+			text: @_header
 
 		@textBoxContent = new Layer
-			parent: @textBox
+			parent: @
 			width: textBoxWidth
 			height: 32
 			backgroundColor: SystemColor.altMediumLow
@@ -77,16 +62,16 @@ class exports.TextBox extends Layer
 		@hintString = new Type
 			parent: @textBoxContent
 			x: 10
-			y: 4
+			y: 6
 			color: SystemColor.baseMedium
-			text: @options.hint
+			text: @_hint
 
 		@contentString = new Type
 			parent: @textBoxContent
 			x: 10
-			y: 4
+			y: 6
 			color: SystemColor.baseHigh
-			text: @options.content
+			text: @_content
 			textOverflow: "clip"
 			visible: false
 		initalContentStringWidth = @contentString.width
@@ -103,14 +88,14 @@ class exports.TextBox extends Layer
 			parent: @textBoxContent
 			width: 30
 			height: 30
-			x: Align.right
+			x: Align.right()
 			backgroundColor: SystemColor.transparent
 			visible: false
 
 		@closeGlyph = new Type
 			parent: @closeButton
 			x: Align.right(-8)
-			y: 8
+			y: 10
 			fontSize: 12
 			uwpStyle: "glyph"
 			text: "\uE10A"
@@ -123,21 +108,22 @@ class exports.TextBox extends Layer
 		@playPipeAnim()
 
 		# EVENTS
-		@textBoxContent.onMouseOver ->
-			@.parent.parent.updateBoxVisuals("mouseOver")
-		@textBoxContent.onMouseDown ->
-			@.parent.parent.updateBoxVisuals("mouseDown")
-		@textBoxContent.onMouseOut ->
-			@.parent.parent.updateBoxVisuals("mouseOut")
+		@textBoxContent.onMouseOver =>
+			@updateBoxVisuals("mouseOver")
+		@textBoxContent.onMouseDown =>
+			@updateBoxVisuals("mouseDown")
+		@textBoxContent.onMouseOut =>
+			@updateBoxVisuals("mouseOut")
 
-		@closeButton.onMouseOver ->
-			@.parent.parent.parent.updateCloseBtnVisuals("mouseOver")
-		@closeButton.onMouseOut ->
-			@.parent.parent.parent.updateCloseBtnVisuals("mouseOut")
+		@closeButton.onMouseOver =>
+			@updateCloseBtnVisuals("mouseOver")
+		@closeButton.onMouseOut =>
+			@updateCloseBtnVisuals("mouseOut")
 
 	# FUNCTIONS
 	setTextBoxHeight: ->
-		if @options.header is "" then 32 else 60
+		if @_header is "" then 32 else 60
+
 	setHintVisiblity: ->
 		if @contentString.text is ""
 			@hintString.visible = true
@@ -153,7 +139,7 @@ class exports.TextBox extends Layer
 		# Resetting contentString width
 		@contentString.width = initalContentStringWidth
 
-		if @focused is true
+		if @_focused is true
 			@closeButton.visible = if @contentString.text is "" then false else true
 			stringMaxWidth = if @contentString.width >= focusedStringMaxWidth then focusedStringMaxWidth else @contentString.width
 			@hintString.visible = false
