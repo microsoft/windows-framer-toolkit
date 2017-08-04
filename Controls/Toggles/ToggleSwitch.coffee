@@ -74,7 +74,7 @@ class exports.ToggleSwitch extends Layer
 			width: 10
 			height: 10
 			borderRadius: 5
-		@thumb.centerY(+0)
+			y: Align.center(2)
 
 		@onOffText = new Type
 			name: "On/Off Text"
@@ -120,14 +120,14 @@ class exports.ToggleSwitch extends Layer
 
 		@height = @headerText.height + @container.height
 
-	thumbPosition = Align.left(3)
+	thumbPosition = 0
 	thumbBackgroundColor = SystemColor.baseMediumHigh
 	toggleBackgroundColor = SystemColor.transparent
 	toggleBorderColor = SystemColor.baseMediumHigh
 
 	updateVisuals: (curEvent) ->
 		if @_toggled
-			thumbPosition = Align.right(-2)
+			thumbPosition = Align.right()
 			@onOffText.text = @_onText
 
 			if @_enabled
@@ -159,7 +159,7 @@ class exports.ToggleSwitch extends Layer
 				headerColor = SystemColor.baseMediumLow
 				onOffTextColor = SystemColor.baseMediumLow
 		else
-			thumbPosition = Align.left(3)
+			thumbPosition = Align.left(4)
 			@onOffText.text = @_offText
 
 			if @_enabled
