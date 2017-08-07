@@ -48,10 +48,12 @@ class exports.TextBox extends Layer
 	createLayers: ->
 		@headerType = new Type
 			parent: @
+			name: "Header"
 			text: @_header
 
 		@textBoxContent = new Layer
 			parent: @
+			name: "TextBox content"
 			width: textBoxWidth
 			height: 32
 			backgroundColor: SystemColor.altMediumLow
@@ -61,6 +63,7 @@ class exports.TextBox extends Layer
 
 		@hintString = new Type
 			parent: @textBoxContent
+			name: "Hint string"
 			x: 10
 			y: 6
 			color: SystemColor.baseMedium
@@ -68,6 +71,7 @@ class exports.TextBox extends Layer
 
 		@contentString = new Type
 			parent: @textBoxContent
+			name: "Content string"
 			x: 10
 			y: 6
 			color: SystemColor.baseHigh
@@ -78,6 +82,7 @@ class exports.TextBox extends Layer
 
 		@pipe = new Type
 			parent: @textBoxContent
+			name: "Pipe"
 			x: @contentString.width + @contentString.x
 			y: 3
 			color: SystemColor.baseHigh
@@ -86,6 +91,7 @@ class exports.TextBox extends Layer
 
 		@closeButton = new Layer
 			parent: @textBoxContent
+			name: "Textbox Content"
 			width: 30
 			height: 30
 			x: Align.right()
@@ -94,6 +100,7 @@ class exports.TextBox extends Layer
 
 		@closeGlyph = new Type
 			parent: @closeButton
+			name: "Close glyph"
 			x: Align.right(-8)
 			y: 10
 			fontSize: 12
