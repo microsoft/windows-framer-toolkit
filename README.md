@@ -1,3 +1,5 @@
+## Microsoft is no longer investing in the Framer Design Kit. For a complete list of supported design kits please see the updated list [here](https://docs.microsoft.com/en-us/windows/uwp/design/downloads/).
+
 # Introduction
 The official Microsoft FramerJS Toolkit. Here's an overview of everything you need to know:
 
